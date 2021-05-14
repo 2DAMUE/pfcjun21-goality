@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "223880262165",
+    "firebase_url": "https://goality-753fc-default-rtdb.firebaseio.com",
+    "project_id": "goality-753fc",
+    "storage_bucket": "goality-753fc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223880262165:android:ace95164f1b053dc8cd41c",
+        "android_client_info": {
+          "package_name": "com.dam.goality"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223880262165-rjbdgbsicoag5pf9vch3l3q4u8dcmou1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7RzSvWgUH_k42hrAdYD8qeosDBNUhPH4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "223880262165-rjbdgbsicoag5pf9vch3l3q4u8dcmou1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223880262165:android:719556179069dd2e8cd41c",
+        "android_client_info": {
+          "package_name": "com.dam.goalityjava"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223880262165-rjbdgbsicoag5pf9vch3l3q4u8dcmou1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7RzSvWgUH_k42hrAdYD8qeosDBNUhPH4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "223880262165-rjbdgbsicoag5pf9vch3l3q4u8dcmou1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

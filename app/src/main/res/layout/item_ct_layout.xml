@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="28dp"
+    android:layout_marginEnd="28dp"
+    android:layout_marginBottom="16dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivFotoCT"
+            android:layout_width="125dp"
+            android:layout_height="125dp" />
+
+        <TextView
+            android:id="@+id/tvNombreCT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_toRightOf="@id/ivFotoCT"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Nombre Cuerpo Técnico"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tvPosicionCT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvNombreCT"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@id/ivFotoCT"
+            android:text="Cargo" />
+
+        <TextView
+            android:id="@+id/tvCargoCT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvPosicionCT"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@id/ivFotoCT"
+            android:text="25 años" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

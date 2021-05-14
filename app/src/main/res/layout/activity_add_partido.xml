@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".AddPartido">
+
+    <LinearLayout
+        android:id="@+id/llTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/addPartidoTitulo1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Nuevo"
+            android:textColor="@color/background3"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/addPartidoTitulo2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/addPartidoTitulo1"
+            android:fontFamily="@font/montserrat_bold"
+            android:text=" partido"
+            android:textColor="@color/background3"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/llTitulo"
+        android:background="@drawable/bg_activity"
+        android:elevation="8dp"
+        android:padding="40dp">
+
+
+        <RadioGroup
+            android:id="@+id/toggle"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/pink_out_line"
+            android:checkedButton="@+id/offer"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/btnLocal"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/toggle_widget_background2"
+                android:button="@null"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:text="Local"
+                android:textColor="@color/statelist" />
+
+            <RadioButton
+                android:id="@+id/btnVisitante"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/toggle_widget_background2"
+                android:button="@null"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:text="Visitante"
+                android:textColor="@color/statelist" />
+        </RadioGroup>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilLocal"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toggle"
+            android:layout_marginTop="8dp">
+
+            <AutoCompleteTextView
+                android:id="@+id/atvLocal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:text="Local" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/vs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tilLocal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="VS."
+            android:textSize="32sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilVisitante"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/vs"
+            android:layout_marginTop="8dp">
+
+            <AutoCompleteTextView
+                android:id="@+id/atvVisitante"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:text="Visitante" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:id="@+id/llHoraPartido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tilVisitante"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/hora"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spnVisitante"
+                android:layout_weight="1"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="left"
+                android:text="Hora del partido:"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/horaPartido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spnVisitante"
+                android:layout_weight="2"
+                android:fontFamily="@font/montserrat"
+                android:gravity="right"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btnHoraPartido"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/llHoraPartido"
+            android:layout_marginTop="8dp"
+            android:drawableLeft="@drawable/ic_hour"
+            android:fontFamily="@font/montserrat"
+            android:onClick="seleccionarHora"
+            android:text="Seleccionar hora" />
+
+
+        <LinearLayout
+            android:id="@+id/llFechaPartido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnHoraPartido"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/fecha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spnVisitante"
+                android:layout_weight="1"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="left"
+                android:text="Fecha del partido:"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/fechaPartido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnHoraPartido"
+                android:layout_weight="2"
+                android:fontFamily="@font/montserrat"
+                android:gravity="right"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnFechaPartido"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/llFechaPartido"
+            android:layout_marginTop="8dp"
+            android:drawableLeft="@drawable/ic_fecha"
+            android:fontFamily="@font/montserrat"
+            android:onClick="seleccionarFecha"
+            android:text="Seleccionar fecha" />
+
+        <LinearLayout
+            android:id="@+id/llBotonesAddPartido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnFechaPartido"
+            android:layout_marginTop="40dp">
+
+            <Button
+                android:id="@+id/btnCancelar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/cancel2"
+                android:fontFamily="@font/montserrat_bold"
+                android:onClick="cancelar"
+                android:text="Cancelar"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btnAceptar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/montserrat_bold"
+                android:onClick="aceptar"
+                android:text="Aceptar"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

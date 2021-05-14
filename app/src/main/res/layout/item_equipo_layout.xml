@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="28dp"
+    android:layout_marginEnd="28dp"
+    android:layout_marginBottom="16dp"
+    android:elevation="8dp"
+    app:cardCornerRadius="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivLogoEquipo"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:src="@drawable/ic_dalendario" />
+
+        <TextView
+            android:id="@+id/tvNombreEquipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_toEndOf="@id/ivLogoEquipo"
+            android:fontFamily="@font/montserrat_bold"
+            android:maxLines="2"
+            android:text="Nombre del equipo"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvRangoEdadEquipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvNombreEquipo"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@id/ivLogoEquipo"
+            android:fontFamily="@font/montserrat"
+            android:text="Rango de edad"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvGeneroEquipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvRangoEdadEquipo"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/ivLogoEquipo"
+            android:fontFamily="@font/montserrat"
+            android:text="Género"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="28dp"
+    android:layout_marginEnd="28dp"
+    android:layout_marginBottom="16dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvLocal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/vs"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="32dp"
+            android:layout_toStartOf="@id/vs"
+            android:fontFamily="@font/montserrat"
+            android:text="Equipo local"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/vs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="VS."
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tvVisitante"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/vs"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@id/vs"
+            android:fontFamily="@font/montserrat"
+            android:text="Equipo visitante"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvHoraPartido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/vs"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/montserrat"
+            android:text="00:00"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tvFechaPartido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvHoraPartido"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/montserrat"
+            android:text="22/05/2021"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.PartidoFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background3">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAddEquipo"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_below="@+id/llTitulo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/primary"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Nuevo partido"
+            android:textSize="16sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPartidos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/btnAddEquipo"
+            android:layout_marginTop="16dp" />
+
+    </RelativeLayout>
+
+
+</FrameLayout>

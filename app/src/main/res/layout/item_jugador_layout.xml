@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="28dp"
+    android:layout_marginEnd="28dp"
+    android:layout_marginBottom="16dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivFoto"
+            android:layout_width="125dp"
+            android:layout_height="125dp" />
+
+        <TextView
+            android:id="@+id/tvNombreJugador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_toRightOf="@id/ivFoto"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Nombre Jugador"
+            android:textSize="18sp" />
+
+        <RelativeLayout
+            android:id="@+id/rlDorsal"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_below="@id/tvNombreJugador"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@id/ivFoto"
+            android:background="@drawable/circle_background">
+
+            <TextView
+                android:id="@+id/tvDorsalJugador"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="10"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tvPosicionJugador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvNombreJugador"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@id/rlDorsal"
+            android:text="Posición" />
+
+        <TextView
+            android:id="@+id/tvEdadJugador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvPosicionJugador"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@id/rlDorsal"
+            android:text="25 años" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
