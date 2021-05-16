@@ -1,20 +1,23 @@
 package com.dam.goality.fragments;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dam.goality.AddCuerpoTecnico;
 import com.dam.goality.CuerpoTecnicoDetailActivity;
-import com.dam.goality.JugadorDetailActivity;
+import com.dam.goality.Detalle;
 import com.dam.goality.R;
 import com.dam.goality.adapter.CuerpoTecnicoAdapter;
 import com.dam.goality.model.CuerpoTecnico;
@@ -30,7 +33,7 @@ import java.util.ArrayList;
 
 public class ListaCuerpoTecnicoStaff extends Fragment {
 
-    Button btnAddCuerpoTecnico;
+//    Button btnAddCuerpoTecnico;
     RecyclerView rvCuerpoTecnico;
     ArrayList<CuerpoTecnico> listaCT;
     CuerpoTecnicoAdapter adapter;
@@ -50,7 +53,8 @@ public class ListaCuerpoTecnicoStaff extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_lista_cuerpo_tecnico_staff, container, false);
 
-        btnAddCuerpoTecnico = view.findViewById(R.id.btnAddCuerpoTecnico);
+//        btnAddCuerpoTecnico = view.findViewById(R.id.btnAddCuerpoTecnico);
+
         rvCuerpoTecnico = view.findViewById(R.id.rvCuerpoTecnico);
         rvCuerpoTecnico.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -75,13 +79,13 @@ public class ListaCuerpoTecnicoStaff extends Fragment {
 
         cargarCuerpoTecnico();
 
-        btnAddCuerpoTecnico.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getActivity(), AddCuerpoTecnico.class);
-                startActivityForResult(i, 1);
-            }
-        });
+//        btnAddCuerpoTecnico.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(getActivity(), AddCuerpoTecnico.class);
+//                startActivityForResult(i, 1);
+//            }
+//        });
 
         // Filtrar jugadores
         cpTodos.setOnClickListener(new View.OnClickListener() {
@@ -171,10 +175,18 @@ public class ListaCuerpoTecnicoStaff extends Fragment {
                     @Override
                     public void onClick(View v) {
                         int i = rvCuerpoTecnico.getChildAdapterPosition(v);
-                        CuerpoTecnico cuerpoTecnico = listaCT.get(i);
+                        CuerpoTecnico cu = listaCT.get(i);
 
                         Intent intent = new Intent(getContext(), CuerpoTecnicoDetailActivity.class);
-                        intent.putExtra("CT", cuerpoTecnico);
+
+                        intent.putExtra("STAFF", cu);
+
+                        intent.putExtra("APEL", cu.getApellidos());
+                        intent.putExtra("CARG", cu.getCargo());
+                        intent.putExtra("NACI", cu.getNacionalidad());
+                        intent.putExtra("URL", cu.getFotoPerfilUrl());
+                        intent.putExtra("NACIONALIDAD", cu.getNacionalidad());
+                        intent.putExtra("NOMBRE", cu.getNombre());
                         startActivity(intent);
                     }
                 });
@@ -213,7 +225,7 @@ public class ListaCuerpoTecnicoStaff extends Fragment {
                         int i = rvCuerpoTecnico.getChildAdapterPosition(v);
                         CuerpoTecnico cuerpoTecnico = listaCT.get(i);
 
-                        Intent intent = new Intent(getContext(), CuerpoTecnicoDetailActivity.class);
+                        Intent intent = new Intent(getContext(), Detalle.class);
                         intent.putExtra("CT", cuerpoTecnico);
                         startActivity(intent);
                     }
@@ -229,6 +241,15 @@ public class ListaCuerpoTecnicoStaff extends Fragment {
 
         }
     };
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
+            Toast.makeText(getActivity(), "OK", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     public void limpiarRecyclerView() {
         listaCT.clear();

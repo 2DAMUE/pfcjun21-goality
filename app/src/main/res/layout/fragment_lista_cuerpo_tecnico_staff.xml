@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!--
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAddCuerpoTecnico"
             android:layout_width="match_parent"
@@ -22,12 +23,12 @@
             android:fontFamily="@font/montserrat_bold"
             android:text="Nuevo cuerpo técnico"
             android:textSize="16sp" />
+            -->
 
         <HorizontalScrollView
             android:id="@+id/hsv"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/btnAddCuerpoTecnico"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:scrollbars="none">
@@ -47,49 +48,49 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/cpEntrenador"
-                    style="@style/CustomChipStyle"
+                    style="@style/CustomChipStyle_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Entrenador" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/cpSegundoEntrenador"
-                    style="@style/CustomChipStyle"
+                    style="@style/CustomChipStyle_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Segundo entrenador" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/cpEntrenadorPorteros"
-                    style="@style/CustomChipStyle"
+                    style="@style/CustomChipStyle_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Entrenador de porteros" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/cpreparadorFisico"
-                    style="@style/CustomChipStyle"
+                    style="@style/CustomChipStyle_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Preparador físico" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/cpNutricionista"
-                    style="@style/CustomChipStyle"
+                    style="@style/CustomChipStyle_5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Nutricionista" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/cpFisioterapeuta"
-                    style="@style/CustomChipStyle"
+                    style="@style/CustomChipStyle_6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Fisioterapeuta" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/cpPsicologo"
-                    style="@style/CustomChipStyle"
+                    style="@style/CustomChipStyle_7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Psicólogo" />

@@ -42,46 +42,6 @@
         android:elevation="8dp"
         android:padding="40dp">
 
-
-        <RadioGroup
-            android:id="@+id/toggle"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:background="@drawable/pink_out_line"
-            android:checkedButton="@+id/offer"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/btnLocal"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="1dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/toggle_widget_background2"
-                android:button="@null"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:text="Local"
-                android:textColor="@color/statelist" />
-
-            <RadioButton
-                android:id="@+id/btnVisitante"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginTop="1dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/toggle_widget_background2"
-                android:button="@null"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:text="Visitante"
-                android:textColor="@color/statelist" />
-        </RadioGroup>
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilLocal"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"

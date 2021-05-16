@@ -3,37 +3,28 @@ package com.dam.goality.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
-import java.util.Map;
-
 public class Equipo implements Parcelable {
 
     private String id;
+    private String imageUrl;
     private String nombre;
-    private String genero;
-    private String rangoEdad;
-    private Map<String, String> idJugadores;
-
-    public Equipo(String id, String nombre, String genero, String rangoEdad, Map<String, String> idJugadores) {
-        this.id = id;
-        this.nombre = nombre;
-        this.genero = genero;
-        this.rangoEdad = rangoEdad;
-        this.idJugadores = idJugadores;
-    }
-
-    public Equipo(String id) {
-        this.id = id;
-    }
+    private String estadio;
 
     public Equipo() {
     }
 
+    public Equipo(String id, String imageUrl, String nombre, String estadio) {
+        this.id = id;
+        this.imageUrl = imageUrl;
+        this.nombre = nombre;
+        this.estadio = estadio;
+    }
+
     protected Equipo(Parcel in) {
         id = in.readString();
+        imageUrl = in.readString();
         nombre = in.readString();
-        genero = in.readString();
-        rangoEdad = in.readString();
+        estadio = in.readString();
     }
 
     public static final Creator<Equipo> CREATOR = new Creator<Equipo>() {
@@ -56,6 +47,14 @@ public class Equipo implements Parcelable {
         this.id = id;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -64,28 +63,12 @@ public class Equipo implements Parcelable {
         this.nombre = nombre;
     }
 
-    public String getGenero() {
-        return genero;
+    public String getEstadio() {
+        return estadio;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
-    public String getRangoEdad() {
-        return rangoEdad;
-    }
-
-    public void setRangoEdad(String rangoEdad) {
-        this.rangoEdad = rangoEdad;
-    }
-
-    public Map<String, String> getIdJugadores() {
-        return idJugadores;
-    }
-
-    public void setIdJugadores(Map<String, String> idJugadores) {
-        this.idJugadores = idJugadores;
+    public void setEstadio(String estadio) {
+        this.estadio = estadio;
     }
 
     @Override
@@ -96,8 +79,8 @@ public class Equipo implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(id);
+        dest.writeString(imageUrl);
         dest.writeString(nombre);
-        dest.writeString(genero);
-        dest.writeString(rangoEdad);
+        dest.writeString(estadio);
     }
 }

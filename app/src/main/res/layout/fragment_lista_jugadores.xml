@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!--
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAddEquipo"
             android:layout_width="match_parent"
@@ -22,13 +23,12 @@
             android:fontFamily="@font/montserrat_bold"
             android:text="Nuevo jugador"
             android:textSize="16sp" />
-
+            -->
 
         <HorizontalScrollView
             android:id="@+id/hsv"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/btnAddEquipo"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:scrollbars="none">
@@ -48,28 +48,28 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/cpPorteros"
-                    style="@style/CustomChipStyle"
+                    style="@style/CustomChipStyle_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Porteros" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/cpDefensas"
-                    style="@style/CustomChipStyle"
+                    style="@style/CustomChipStyle_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Defensas" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/cpMediocentros"
-                    style="@style/CustomChipStyle"
+                    style="@style/CustomChipStyle_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Mediocentros" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/cpDplanteros"
-                    style="@style/CustomChipStyle"
+                    style="@style/CustomChipStyle_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Delanteros" />

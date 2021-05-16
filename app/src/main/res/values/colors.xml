@@ -12,6 +12,7 @@
     <color name="background">#303845</color>
     <color name="background2">#394352</color>
     <color name="background3">#EDF0F7</color>
+    <color name="background4">#CFD9E0</color>
     <color name="boton">#D4DBE5</color>
     <color name="boton_texto">#9E9EA7</color>
 
@@ -22,5 +23,14 @@
     <color name="green">#08EC91</color>
     <color name="cancel">#ED5057</color>
     <color name="cancel2">#3A5171</color>
+
+    <!-- Colores -->
+    <color name="chip1">#EA5D66</color>
+    <color name="chip2">#7BC678</color>
+    <color name="chip3">#ECB35D</color>
+    <color name="chip4">#3D4D74</color>
+    <color name="chip5">#246396</color>
+    <color name="chip6">#205987</color>
+    <color name="chip7">#184163</color>
 
 </resources>

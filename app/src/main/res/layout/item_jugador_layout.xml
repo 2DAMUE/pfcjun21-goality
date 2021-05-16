@@ -7,6 +7,7 @@
     android:layout_marginBottom="16dp">
 
     <RelativeLayout
+        android:id="@+id/rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -67,6 +68,13 @@
             android:layout_marginTop="8dp"
             android:layout_toEndOf="@id/rlDorsal"
             android:text="25 años" />
+
+        <View
+            android:id="@+id/border"
+            android:layout_width="8dp"
+            android:layout_height="125dp"
+            android:layout_alignParentEnd="true"
+            android:background="@color/primary" />
 
     </RelativeLayout>
 

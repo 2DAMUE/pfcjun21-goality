@@ -31,7 +31,7 @@ import java.util.ArrayList;
 public class EntrenamientoFragment extends Fragment {
 
     DatabaseReference mDatabase;
-    Button btnAddEquipo;
+//    Button btnAddEquipo;
     RecyclerView rvEntrenamientos;
     ArrayList<Entrenamiento> listaEntrenamientos;
     EntrenamientoAdapter adapter;
@@ -42,7 +42,7 @@ public class EntrenamientoFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_calendario, container, false);
 
-        btnAddEquipo = view.findViewById(R.id.btnAddEquipo);
+//        btnAddEquipo = view.findViewById(R.id.btnAddEquipo);
         rvEntrenamientos = view.findViewById(R.id.rvEntrenamientos);
 
         rvEntrenamientos.setHasFixedSize(true);
@@ -57,14 +57,13 @@ public class EntrenamientoFragment extends Fragment {
 
         cargarEntrenamentos();
 
-        btnAddEquipo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getActivity(), AddEntrenamiento.class);
-                startActivityForResult(i, 1);
-            }
-        });
-
+//        btnAddEquipo.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(getActivity(), AddEntrenamiento.class);
+//                startActivityForResult(i, 1);
+//            }
+//        });
 
         return view;
     }
@@ -86,6 +85,8 @@ public class EntrenamientoFragment extends Fragment {
                     public void onClick(View v) {
                         int i = rvEntrenamientos.getChildAdapterPosition(v);
                         Entrenamiento entrenamiento = listaEntrenamientos.get(i);
+
+                        Toast.makeText(getContext(), entrenamiento.toString(), Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent(getContext(), EntrenamientoDetailActivity.class);
                         intent.putExtra("ENTRENAMIENTO", entrenamiento);

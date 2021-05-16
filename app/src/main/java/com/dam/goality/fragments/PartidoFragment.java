@@ -31,7 +31,7 @@ import java.util.List;
 
 public class PartidoFragment extends Fragment {
 
-    Button btnAddEquipo;
+//    Button btnAddEquipo;
     RecyclerView rvPartidos;
     List<Partido> listaPartidos;
     PartidosAdapter adapter;
@@ -42,7 +42,7 @@ public class PartidoFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        btnAddEquipo = view.findViewById(R.id.btnAddEquipo);
+//        btnAddEquipo = view.findViewById(R.id.btnAddEquipo);
 
         rvPartidos = view.findViewById(R.id.rvPartidos);
         rvPartidos.setHasFixedSize(true);
@@ -57,13 +57,13 @@ public class PartidoFragment extends Fragment {
 
         cargarPartidos();
 
-        btnAddEquipo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getActivity(), AddPartido.class);
-                startActivityForResult(i, 3);
-            }
-        });
+//        btnAddEquipo.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(getActivity(), AddPartido.class);
+//                startActivityForResult(i, 3);
+//            }
+//        });
 
         return view;
     }

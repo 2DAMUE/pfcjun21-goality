@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -62,6 +63,7 @@ public class CuerpoTecnicoAdapter
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
+        View border;
         ImageView ivFotoCT;
         TextView tvNombreCT;
         TextView tvPosicionCT;
@@ -70,6 +72,7 @@ public class CuerpoTecnicoAdapter
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            border = itemView.findViewById(R.id.border);
             ivFotoCT = itemView.findViewById(R.id.ivFotoCT);
             tvNombreCT = itemView.findViewById(R.id.tvNombreCT);
             tvPosicionCT = itemView.findViewById(R.id.tvPosicionCT);
@@ -82,6 +85,28 @@ public class CuerpoTecnicoAdapter
             tvNombreCT.setText(ct.getNombre() + " " + ct.getApellidos());
             tvPosicionCT.setText(ct.getCargo());
             tvCargoCT.setText(String.valueOf(ct.getEdad()));
+
+            if (ct.getCargo().equalsIgnoreCase("Entrenador")) {
+                border.setBackground(ContextCompat.getDrawable(mContext, R.color.chip1));
+            }
+            if (ct.getCargo().equalsIgnoreCase("Segundo entrenador")) {
+                border.setBackground(ContextCompat.getDrawable(mContext, R.color.chip2));
+            }
+            if (ct.getCargo().equalsIgnoreCase("Entrenador de porteros")) {
+                border.setBackground(ContextCompat.getDrawable(mContext, R.color.chip3));
+            }
+            if (ct.getCargo().equalsIgnoreCase("Preparador físico")) {
+                border.setBackground(ContextCompat.getDrawable(mContext, R.color.chip4));
+            }
+            if (ct.getCargo().equalsIgnoreCase("Nutricionista")) {
+                border.setBackground(ContextCompat.getDrawable(mContext, R.color.chip5));
+            }
+            if (ct.getCargo().equalsIgnoreCase("Fisioterapeuta")) {
+                border.setBackground(ContextCompat.getDrawable(mContext, R.color.chip6));
+            }
+            if (ct.getCargo().equalsIgnoreCase("Psicólogo")) {
+                border.setBackground(ContextCompat.getDrawable(mContext, R.color.chip7));
+            }
         }
     }
 }

@@ -9,7 +9,8 @@ import com.dam.goality.model.Entrenamiento;
 
 public class EntrenamientoDetailActivity extends AppCompatActivity {
 
-    TextView horaEntrenamiento;
+    TextView tvFechaEntrenamietoD;
+    TextView tvHoraEntrenamietoD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,10 +19,12 @@ public class EntrenamientoDetailActivity extends AppCompatActivity {
 
         Entrenamiento entrenamiento = getIntent().getParcelableExtra("ENTRENAMIENTO");
 
-        horaEntrenamiento = findViewById(R.id.horaEntrenamiento);
+        tvFechaEntrenamietoD = findViewById(R.id.tvFechaEntrenamietoD);
+        tvHoraEntrenamietoD = findViewById(R.id.tvHoraEntrenamietoD);
 
         // cargar los datos del entrenamiento
 
-        horaEntrenamiento.setText(entrenamiento.getHoraEntrenamiento());
+        tvFechaEntrenamietoD.setText(entrenamiento.getFechaEntrenamiento());
+        tvHoraEntrenamietoD.setText(entrenamiento.getHoraEntrenamiento());
     }
 }

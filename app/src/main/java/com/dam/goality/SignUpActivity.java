@@ -88,6 +88,17 @@ public class SignUpActivity extends AppCompatActivity {
                 i.putExtra("TIPO", tipo);
                 startActivity(i);
             }
+
+            if (tipo.equalsIgnoreCase("Jugador")) {
+
+                Intent i = new Intent(this, SignUpJugador.class);
+                i.putExtra("NOMBRE", sNombre);
+                i.putExtra("APELLIDO", sApellido);
+                i.putExtra("EMAIL", sEmail);
+                i.putExtra("PASSWORD", sPassword);
+                i.putExtra("TIPO", tipo);
+                startActivity(i);
+            }
 //            registrarUsuario(sNombre, sApellido, sEmail, sPassword, tipo);
 //            Toast.makeText(this, tipo, Toast.LENGTH_SHORT).show();
         }

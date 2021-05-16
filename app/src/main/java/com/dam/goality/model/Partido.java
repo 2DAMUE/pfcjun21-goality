@@ -7,27 +7,36 @@ public class Partido implements Parcelable {
 
     private String id;
     private String local;
+    private String imgLocal;
     private String visitante;
+    private String imgVisitante;
     private String horaPartido;
     private String fechaPartido;
+    private String estadio;
 
     public Partido() {
     }
 
-    public Partido(String id, String local, String visitante, String horaPartido, String fechaPartido) {
+    public Partido(String id, String local, String imgLocal, String visitante, String imgVisitante, String horaPartido, String fechaPartido, String estadio) {
         this.id = id;
         this.local = local;
+        this.imgLocal = imgLocal;
         this.visitante = visitante;
+        this.imgVisitante = imgVisitante;
         this.horaPartido = horaPartido;
         this.fechaPartido = fechaPartido;
+        this.estadio = estadio;
     }
 
     protected Partido(Parcel in) {
         id = in.readString();
         local = in.readString();
+        imgLocal = in.readString();
         visitante = in.readString();
+        imgVisitante = in.readString();
         horaPartido = in.readString();
         fechaPartido = in.readString();
+        estadio = in.readString();
     }
 
     public static final Creator<Partido> CREATOR = new Creator<Partido>() {
@@ -58,12 +67,28 @@ public class Partido implements Parcelable {
         this.local = local;
     }
 
+    public String getImgLocal() {
+        return imgLocal;
+    }
+
+    public void setImgLocal(String imgLocal) {
+        this.imgLocal = imgLocal;
+    }
+
     public String getVisitante() {
         return visitante;
     }
 
     public void setVisitante(String visitante) {
         this.visitante = visitante;
+    }
+
+    public String getImgVisitante() {
+        return imgVisitante;
+    }
+
+    public void setImgVisitante(String imgVisitante) {
+        this.imgVisitante = imgVisitante;
     }
 
     public String getHoraPartido() {
@@ -82,6 +107,14 @@ public class Partido implements Parcelable {
         this.fechaPartido = fechaPartido;
     }
 
+    public String getEstadio() {
+        return estadio;
+    }
+
+    public void setEstadio(String estadio) {
+        this.estadio = estadio;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -91,8 +124,11 @@ public class Partido implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(id);
         dest.writeString(local);
+        dest.writeString(imgLocal);
         dest.writeString(visitante);
+        dest.writeString(imgVisitante);
         dest.writeString(horaPartido);
         dest.writeString(fechaPartido);
+        dest.writeString(estadio);
     }
 }

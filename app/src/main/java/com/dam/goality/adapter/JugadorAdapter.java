@@ -5,9 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -62,6 +64,8 @@ public class JugadorAdapter
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
+        View border;
+        RelativeLayout rlDorsal;
         ImageView ivFoto;
         TextView tvNombreJugador;
         TextView tvDorsalJugador;
@@ -71,6 +75,8 @@ public class JugadorAdapter
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            border = itemView.findViewById(R.id.border);
+            rlDorsal = itemView.findViewById(R.id.rlDorsal);
             ivFoto = itemView.findViewById(R.id.ivFoto);
             tvNombreJugador = itemView.findViewById(R.id.tvNombreJugador);
             tvDorsalJugador = itemView.findViewById(R.id.tvDorsalJugador);
@@ -85,6 +91,26 @@ public class JugadorAdapter
             tvDorsalJugador.setText(String.valueOf(jugador.getDorsal()));
             tvPosicionJugador.setText(jugador.getPosicion());
             tvEdadJugador.setText(String.valueOf(jugador.getEdad()));
+
+            if (jugador.getPosicion().equalsIgnoreCase("Portero")) {
+                border.setBackground(ContextCompat.getDrawable(mContext, R.color.chip1));
+                rlDorsal.setBackground(ContextCompat.getDrawable(mContext, R.drawable.circle_background_1));
+            }
+
+            if (jugador.getPosicion().equalsIgnoreCase("Defensa")) {
+                border.setBackground(ContextCompat.getDrawable(mContext, R.color.chip2));
+                rlDorsal.setBackground(ContextCompat.getDrawable(mContext, R.drawable.circle_background_2));
+            }
+
+            if (jugador.getPosicion().equalsIgnoreCase("Mediocentro")) {
+                border.setBackground(ContextCompat.getDrawable(mContext, R.color.chip3));
+                rlDorsal.setBackground(ContextCompat.getDrawable(mContext, R.drawable.circle_background_3));
+            }
+
+            if (jugador.getPosicion().equalsIgnoreCase("Delantero")) {
+                border.setBackground(ContextCompat.getDrawable(mContext, R.color.chip4));
+                rlDorsal.setBackground(ContextCompat.getDrawable(mContext, R.drawable.circle_background_4));
+            }
         }
     }
 }

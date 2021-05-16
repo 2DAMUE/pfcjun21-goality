@@ -5,13 +5,24 @@ import android.os.Parcel;
 public class CuerpoTecnico extends Usuario {
 
     private String cargo;
+    private String role;
 
-    public CuerpoTecnico(String id, String nombre, String apellidos, String fotoPerfilUrl, int edad, String fechaNacimiento, String nacionalidad, String cargo) {
+    public CuerpoTecnico(String id, String nombre, String apellidos, String fotoPerfilUrl, int edad, String fechaNacimiento, String nacionalidad, String cargo, String role) {
         super(id, nombre, apellidos, fotoPerfilUrl, edad, fechaNacimiento, nacionalidad);
         this.cargo = cargo;
+        this.role = role;
     }
 
-    public CuerpoTecnico() {}
+    public CuerpoTecnico() {
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public String getCargo() {
         return cargo;
@@ -28,6 +39,7 @@ public class CuerpoTecnico extends Usuario {
     private CuerpoTecnico(Parcel in) {
         super(in);
         this.cargo = in.readString();
+        this.role = in.readString();
     }
 
     public static final Creator<CuerpoTecnico> CREATOR = new Creator<CuerpoTecnico>() {
@@ -50,5 +62,6 @@ public class CuerpoTecnico extends Usuario {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(cargo);
+        dest.writeString(role);
     }
 }

@@ -28,12 +28,79 @@
         <item name="backgroundTint">@color/statelist</item>
     </style>
 
+    <!-- Chip color list -->
+
     <style name="CustomChipStyle" parent="Widget.MaterialComponents.Chip.Filter">
         <item name="chipBackgroundColor">@color/primary</item>
         <item name="android:textColor">@color/white</item>
         <item name="checkedIconTint">@color/white</item>
         <item name="fontFamily">@font/montserrat</item>
         <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="CustomChipStyle_1" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="chipBackgroundColor">@color/chip1</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="checkedIconTint">@color/white</item>
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="CustomChipStyle_2" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="chipBackgroundColor">@color/chip2</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="checkedIconTint">@color/white</item>
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="CustomChipStyle_3" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="chipBackgroundColor">@color/chip3</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="checkedIconTint">@color/white</item>
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="CustomChipStyle_4" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="chipBackgroundColor">@color/chip4</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="checkedIconTint">@color/white</item>
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="CustomChipStyle_5" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="chipBackgroundColor">@color/chip5</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="checkedIconTint">@color/white</item>
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="CustomChipStyle_6" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="chipBackgroundColor">@color/chip6</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="checkedIconTint">@color/white</item>
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="CustomChipStyle_7" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="chipBackgroundColor">@color/chip7</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="checkedIconTint">@color/white</item>
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- Modal Bottom Dialog -->
+    <style name="BottomSheetTheme" parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
     </style>
 
 </resources>

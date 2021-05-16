@@ -4,11 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.dam.goality.R;
 import com.dam.goality.model.Partido;
 
@@ -60,6 +62,8 @@ public class PartidosAdapter
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
+        ImageView ivLocal;
+        ImageView ivVisitante;
         TextView tvLocal;
         TextView tvVisitante;
         TextView tvHoraPartido;
@@ -67,6 +71,8 @@ public class PartidosAdapter
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            ivLocal = itemView.findViewById(R.id.ivLocal);
+            ivVisitante = itemView.findViewById(R.id.ivVisitante);
             tvLocal = itemView.findViewById(R.id.tvLocal);
             tvVisitante = itemView.findViewById(R.id.tvVisitante);
             tvHoraPartido = itemView.findViewById(R.id.tvHoraPartido);
@@ -74,10 +80,15 @@ public class PartidosAdapter
         }
 
         public void bindItem(Partido partido) {
+            Glide.with(ivLocal).load(partido.getImgLocal())
+                    .into(ivLocal);
+            Glide.with(ivVisitante).load(partido.getImgVisitante())
+                    .into(ivVisitante);
             tvLocal.setText(partido.getLocal());
             tvVisitante.setText(partido.getVisitante());
             tvHoraPartido.setText(partido.getHoraPartido());
             tvFechaPartido.setText(partido.getFechaPartido());
         }
     }
+
 }

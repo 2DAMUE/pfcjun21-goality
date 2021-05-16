@@ -31,6 +31,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 
@@ -51,7 +52,7 @@ public class AddCuerpoTecnico extends AppCompatActivity {
     ArrayAdapter<String> adapterCargo;
 
     Uri imageUri;
-    ImageView ivPerfil;
+    ImageView ivPerfilCT;
     TextView tvCambiarFoto;
     TextView tvDateStaff;
     EditText etNombre;
@@ -70,7 +71,7 @@ public class AddCuerpoTecnico extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_cuerpo_tecnico);
 
-        ivPerfil = findViewById(R.id.ivPerfil);
+        ivPerfilCT = findViewById(R.id.ivPerfilCT);
         tvCambiarFoto = findViewById(R.id.tvCambiarFoto);
         npEdadStaff = findViewById(R.id.npEdadStaff);
         npEdadStaff.setMaxValue(1);
@@ -146,6 +147,9 @@ public class AddCuerpoTecnico extends AppCompatActivity {
                 startActivityForResult(Intent.createChooser(intent, "Complete la acción usando"), 1);
             }
         });
+
+        // Storage
+        storageReference = FirebaseStorage.getInstance().getReference("CuerpoTecnico");
     }
 
     // Cambiar foto de perfil
@@ -155,8 +159,8 @@ public class AddCuerpoTecnico extends AppCompatActivity {
         if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
             // Cargamos la imagen seleccionada en el ImageView
             imageUri = data.getData();
-            Glide.with(ivPerfil.getContext()).load(imageUri)
-                    .into(ivPerfil);
+            Glide.with(ivPerfilCT.getContext()).load(imageUri)
+                    .into(ivPerfilCT);
         }
     }
 
@@ -176,7 +180,7 @@ public class AddCuerpoTecnico extends AppCompatActivity {
 
     private void upload() {
         ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Creando jugador");
+        progressDialog.setMessage("Creando miembro del cuerpo técnico");
         progressDialog.show();
 
         if (imageUri != null) {

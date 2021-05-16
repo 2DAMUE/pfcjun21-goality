@@ -9,20 +9,24 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
-import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import com.dam.goality.dialogFragments.DatePickerFragment;
 import com.dam.goality.dialogFragments.TimePickerFragment;
+import com.dam.goality.model.Equipo;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -34,13 +38,19 @@ public class AddPartido extends AppCompatActivity implements TimePickerDialog.On
     TextView horaPartido;
     TextView fechaPartido;
     Spinner spnVisitante;
-    RadioButton btnLocal;
-    RadioButton btnVisitante;
     TextInputLayout tilLocal;
     AutoCompleteTextView atvLocal;
     ArrayAdapter<String> adapter;
     TextInputLayout tilVisitante;
     AutoCompleteTextView atvVisitante;
+
+    ArrayList<Equipo> lista;
+    ArrayList<String> listaEquipos;
+
+    DatabaseReference reference;
+
+    int posLocal;
+    int posVisitante;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,14 +60,13 @@ public class AddPartido extends AppCompatActivity implements TimePickerDialog.On
         spnVisitante = findViewById(R.id.spnVisitante);
         horaPartido = findViewById(R.id.horaPartido);
         fechaPartido = findViewById(R.id.fechaPartido);
-        btnLocal = findViewById(R.id.btnLocal);
-        btnVisitante = findViewById(R.id.btnVisitante);
-        btnLocal.setChecked(true);
 
-        ArrayList<String> listaEquipos = new ArrayList<>();
-        listaEquipos.add("Equipo 1");
-        listaEquipos.add("Equipo 2");
-        listaEquipos.add("Equipo 3");
+        listaEquipos = new ArrayList<>();
+//        listaEquipos.add("Equipo 1");
+//        listaEquipos.add("Equipo 2");
+//        listaEquipos.add("Equipo 3");
+
+        cargarEquipos();
 
         // Drop down equipo local
         tilLocal = findViewById(R.id.tilLocal);
@@ -65,6 +74,12 @@ public class AddPartido extends AppCompatActivity implements TimePickerDialog.On
         adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, listaEquipos);
         atvLocal.setAdapter(adapter);
         atvLocal.setThreshold(1);
+        atvLocal.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                posLocal = position;
+            }
+        });
 
         // Drop down equipo visitante
         tilVisitante = findViewById(R.id.tilVisitante);
@@ -72,22 +87,37 @@ public class AddPartido extends AppCompatActivity implements TimePickerDialog.On
         adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, listaEquipos);
         atvVisitante.setAdapter(adapter);
         atvVisitante.setThreshold(1);
-
-        btnLocal.setOnClickListener(new View.OnClickListener() {
+        atvVisitante.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                habilitarBotones(true);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                posVisitante = position;
             }
         });
 
-        btnVisitante.setOnClickListener(new View.OnClickListener() {
+    }
+
+    public void cargarEquipos() {
+        lista = new ArrayList<Equipo>();
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("ListaEquipos");
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                habilitarBotones(false);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot snap : snapshot.getChildren()) {
+                    Equipo e = snap.getValue(Equipo.class);
+                    lista.add(e);
+                }
+
+                for (Equipo eq : lista) {
+                    listaEquipos.add(eq.getNombre());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
-
-        habilitarBotones(true);
 
     }
 
@@ -137,9 +167,12 @@ public class AddPartido extends AppCompatActivity implements TimePickerDialog.On
             HashMap<String, Object> hashMap = new HashMap<>();
             hashMap.put("id", partidoId);
             hashMap.put("local", local);
+            hashMap.put("imgLocal", lista.get(posLocal).getImageUrl());
             hashMap.put("visitante", visitante);
+            hashMap.put("imgVisitante", lista.get(posVisitante).getImageUrl());
             hashMap.put("horaPartido", hora);
             hashMap.put("fechaPartido", fecha);
+            hashMap.put("estadio", lista.get(posLocal).getEstadio());
 
             reference.child(partidoId).setValue(hashMap);
 

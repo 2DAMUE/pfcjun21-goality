@@ -10,60 +10,82 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/ivLocal"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="16dp" />
+
         <TextView
             android:id="@+id/tvLocal"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/vs"
+            android:layout_below="@+id/ivLocal"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginRight="32dp"
-            android:layout_toStartOf="@id/vs"
             android:fontFamily="@font/montserrat"
-            android:text="Equipo local"
-            android:textSize="16sp" />
+            android:gravity="center"
+            android:text="Equipo local" />
 
         <TextView
             android:id="@+id/vs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="40dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="VS."
-            android:textSize="24sp" />
+            android:textSize="22sp" />
+
+        <ImageView
+            android:id="@+id/ivVisitante"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="48dp" />
 
         <TextView
             android:id="@+id/tvVisitante"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/vs"
-            android:layout_marginLeft="32dp"
+            android:layout_below="@+id/ivVisitante"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="8dp"
-            android:layout_toEndOf="@id/vs"
+            android:layout_marginRight="16dp"
             android:fontFamily="@font/montserrat"
-            android:text="Equipo visitante"
-            android:textSize="16sp" />
+            android:gravity="center"
+            android:text="Equipo visitante" />
 
-        <TextView
-            android:id="@+id/tvHoraPartido"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/vs"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="@font/montserrat"
-            android:text="00:00"
-            android:textSize="24sp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_below="@+id/tvLocal"
+            android:layout_marginTop="16dp"
+            android:background="#00DAC6">
 
-        <TextView
-            android:id="@+id/tvFechaPartido"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvHoraPartido"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="16dp"
-            android:fontFamily="@font/montserrat"
-            android:text="22/05/2021"
-            android:textSize="16sp" />
+            <TextView
+                android:id="@+id/tvHoraPartido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="32dp"
+                android:fontFamily="@font/montserrat"
+                android:text="00:00"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvFechaPartido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="32dp"
+                android:fontFamily="@font/montserrat"
+                android:text="22/05/2021"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
 
     </RelativeLayout>
 

@@ -71,4 +71,13 @@ public class Entrenamiento implements Parcelable {
         dest.writeString(horaEntrenamiento);
         dest.writeString(fechaEntrenamiento);
     }
+
+    @Override
+    public String toString() {
+        return "Entrenamiento{" +
+                "id='" + id + '\'' +
+                ", horaEntrenamiento='" + horaEntrenamiento + '\'' +
+                ", fechaEntrenamiento='" + fechaEntrenamiento + '\'' +
+                '}';
+    }
 }

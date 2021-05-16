@@ -10,6 +10,7 @@
         android:layout_height="match_parent"
         android:background="@color/background3">
 
+        <!--
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAddEquipo"
             android:layout_width="match_parent"
@@ -21,13 +22,12 @@
             android:backgroundTint="@color/primary"
             android:fontFamily="@font/montserrat_bold"
             android:text="Nuevo partido"
-            android:textSize="16sp" />
+            android:textSize="16sp" /> -->
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvPartidos"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/btnAddEquipo"
             android:layout_marginTop="16dp" />
 
     </RelativeLayout>

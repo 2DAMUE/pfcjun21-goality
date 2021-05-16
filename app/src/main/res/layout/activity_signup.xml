@@ -165,6 +165,7 @@
         android:layout_width="325dp"
         android:layout_height="64dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/scrim2"
         android:fontFamily="@font/montserrat_bold"
         android:onClick="signUpUser"
         android:text="Continuar registro"

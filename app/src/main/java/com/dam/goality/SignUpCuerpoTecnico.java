@@ -16,15 +16,16 @@ import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -41,6 +42,7 @@ import java.util.HashMap;
 
 public class SignUpCuerpoTecnico extends AppCompatActivity {
 
+    ConstraintLayout cl;
     TextInputLayout tilNacimiento;
     AutoCompleteTextView atvNacimiento;
     ArrayList<String> listaPaises;
@@ -78,6 +80,7 @@ public class SignUpCuerpoTecnico extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_cuerpo_tecnico);
 
+        cl = findViewById(R.id.cl);
         npEdadStaff = findViewById(R.id.npEdadStaff);
         npEdadStaff.setMaxValue(4);
         npEdadStaff.setMaxValue(99);
@@ -177,7 +180,16 @@ public class SignUpCuerpoTecnico extends AppCompatActivity {
 
         if (fecha.isEmpty() || paisNacimiento.equalsIgnoreCase("Selecciona la nacionalidad")
                 || cargo.equalsIgnoreCase("Selecciona el cargo") || edad == 0) {
-            Toast.makeText(this, "Debes rellenar todos los campos", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Debes rellenar todos los campos", Toast.LENGTH_SHORT).show();
+            Snackbar.make(cl, "Debes rellenar todos los campos", Snackbar.LENGTH_SHORT)
+                    .setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    })
+                    .setActionTextColor(getResources().getColor(R.color.primary))
+                    .show();
         } else {
             registrarUsuario(paisNacimiento, cargo, edad);
         }
@@ -222,8 +234,17 @@ public class SignUpCuerpoTecnico extends AppCompatActivity {
 
                         } else {
                             progressDialog.dismiss();
-                            Toast.makeText(SignUpCuerpoTecnico.this, "Ya hay un usuario registrado con este mail",
-                                    Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(SignUpCuerpoTecnico.this, "Ya hay un usuario registrado con este mail",
+//                                    Toast.LENGTH_SHORT).show();
+                            Snackbar.make(cl, "Ya hay un usuario registrado con este email", Snackbar.LENGTH_SHORT)
+                                    .setAction("OK", new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+
+                                        }
+                                    })
+                                    .setActionTextColor(getResources().getColor(R.color.primary))
+                                    .show();
                         }
                     }
                 });

@@ -11,16 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dam.goality.R;
-import com.dam.goality.model.Equipo;
+import com.dam.goality.model.EquipoCategoria;
 
 import java.util.List;
 
 public class EquiposAdapter extends RecyclerView.Adapter<EquiposAdapter.ViewHolder> {
 
     private Context mContext;
-    private List<Equipo> mEquipos;
+    private List<EquipoCategoria> mEquipos;
 
-    public EquiposAdapter(Context mContext, List<Equipo> mEquipos) {
+    public EquiposAdapter(Context mContext, List<EquipoCategoria> mEquipos) {
         this.mContext = mContext;
         this.mEquipos = mEquipos;
     }
@@ -57,7 +57,7 @@ public class EquiposAdapter extends RecyclerView.Adapter<EquiposAdapter.ViewHold
             tvGeneroEquipo = itemView.findViewById(R.id.tvGeneroEquipo);
         }
 
-        public void bindItem(Equipo equipo) {
+        public void bindItem(EquipoCategoria equipo) {
             tvRangoEdadEquipo.setText(equipo.getRangoEdad());
             tvGeneroEquipo.setText(equipo.getGenero());
         }
