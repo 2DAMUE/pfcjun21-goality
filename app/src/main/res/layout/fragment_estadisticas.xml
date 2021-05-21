@@ -7,7 +7,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="64dp">
 
         <Button
             android:id="@+id/cargarEquipos"
@@ -15,6 +16,16 @@
             android:layout_height="wrap_content"
             android:text="Cargar Equipos" />
 
+        <Button
+            android:id="@+id/cargarPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cargarEquipos"
+            android:layout_marginTop="40dp"
+            android:text="Cargar Contraseña" />
+
+
     </RelativeLayout>
+
 
 </FrameLayout>

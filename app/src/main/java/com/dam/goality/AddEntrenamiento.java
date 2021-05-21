@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -15,6 +16,7 @@ import androidx.fragment.app.DialogFragment;
 
 import com.dam.goality.dialogFragments.DatePickerFragment;
 import com.dam.goality.dialogFragments.TimePickerFragment;
+import com.google.android.material.slider.Slider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -26,6 +28,8 @@ public class AddEntrenamiento extends AppCompatActivity implements TimePickerDia
 
     TextView horaEntrenamiento;
     TextView fechaEntrenamiento;
+    Slider slider;
+    EditText etDescripcion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,8 @@ public class AddEntrenamiento extends AppCompatActivity implements TimePickerDia
 
         horaEntrenamiento = findViewById(R.id.horaEntrenamiento);
         fechaEntrenamiento = findViewById(R.id.fechaEntrenamiento);
+        slider = findViewById(R.id.slider);
+        etDescripcion = findViewById(R.id.etDescripcion);
 
     }
 
@@ -61,6 +67,9 @@ public class AddEntrenamiento extends AppCompatActivity implements TimePickerDia
             hashMap.put("id", EntrenamientoId);
             hashMap.put("horaEntrenamiento", hora);
             hashMap.put("fechaEntrenamiento", fecha);
+            hashMap.put("duracion", slider.getValue());
+            hashMap.put("lugar", "https://firebasestorage.googleapis.com/v0/b/goality-753fc.appspot.com/o/Estadios%2Ffutbol-fuentelucha2.jpg?alt=media&token=b2ec4343-2887-4372-8455-c2a3be1537f6");
+            hashMap.put("descripcion", etDescripcion.getText().toString());
 
             reference.child(EntrenamientoId).setValue(hashMap);
 

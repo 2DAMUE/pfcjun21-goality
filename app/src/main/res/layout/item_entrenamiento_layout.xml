@@ -11,23 +11,44 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:id="@+id/hora"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="24dp"
+            android:background="@drawable/ic_hora_partido" />
+
         <TextView
             android:id="@+id/tvHoraPartido"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:layout_toEndOf="@id/hora"
             android:fontFamily="@font/montserrat"
             android:text="00:00"
-            android:textSize="24sp" />
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/fecha"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="24dp"
+            android:layout_toStartOf="@id/tvFechaPartido"
+            android:background="@drawable/ic_fecha" />
 
         <TextView
             android:id="@+id/tvFechaPartido"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvHoraPartido"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="16dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="24dp"
             android:fontFamily="@font/montserrat"
             android:text="22/05/2021"
             android:textSize="16sp" />

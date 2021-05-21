@@ -8,11 +8,17 @@ public class Entrenamiento implements Parcelable {
     private String id;
     private String horaEntrenamiento;
     private String fechaEntrenamiento;
+    private int duracion;
+    private String lugar;
+    private String descripcion;
 
-    public Entrenamiento(String id, String horaEntrenamiento, String fechaEntrenamiento) {
+    public Entrenamiento(String id, String horaEntrenamiento, String fechaEntrenamiento, int duracion, String lugar, String descripcion) {
         this.id = id;
         this.horaEntrenamiento = horaEntrenamiento;
         this.fechaEntrenamiento = fechaEntrenamiento;
+        this.duracion = duracion;
+        this.lugar = lugar;
+        this.descripcion = descripcion;
     }
 
     public Entrenamiento() {
@@ -22,6 +28,9 @@ public class Entrenamiento implements Parcelable {
         id = in.readString();
         horaEntrenamiento = in.readString();
         fechaEntrenamiento = in.readString();
+        duracion = in.readInt();
+        lugar = in.readString();
+        descripcion = in.readString();
     }
 
     public static final Creator<Entrenamiento> CREATOR = new Creator<Entrenamiento>() {
@@ -60,6 +69,30 @@ public class Entrenamiento implements Parcelable {
         this.fechaEntrenamiento = fechaEntrenamiento;
     }
 
+    public int getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
+    }
+
+    public String getLugar() {
+        return lugar;
+    }
+
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -70,14 +103,8 @@ public class Entrenamiento implements Parcelable {
         dest.writeString(id);
         dest.writeString(horaEntrenamiento);
         dest.writeString(fechaEntrenamiento);
-    }
-
-    @Override
-    public String toString() {
-        return "Entrenamiento{" +
-                "id='" + id + '\'' +
-                ", horaEntrenamiento='" + horaEntrenamiento + '\'' +
-                ", fechaEntrenamiento='" + fechaEntrenamiento + '\'' +
-                '}';
+        dest.writeInt(duracion);
+        dest.writeString(lugar);
+        dest.writeString(descripcion);
     }
 }

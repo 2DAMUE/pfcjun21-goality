@@ -9,7 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Goality">
-        <activity android:name=".Detalle"></activity>
+        <activity android:name=".SignUpJugador_2"></activity>
+        <activity
+            android:name=".AddJugadorOpciones"
+            android:theme="@style/Theme.GoalityNoActionBar" />
+        <activity
+            android:name=".AddResultado"
+            android:theme="@style/Theme.GoalityNoActionBar" />
+        <activity android:name=".Detalle" />
         <activity
             android:name=".CuerpoTecnicoDetailActivity"
             android:theme="@style/Theme.GoalityNoActionBar" />

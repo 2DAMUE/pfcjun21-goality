@@ -21,6 +21,7 @@ import androidx.fragment.app.DialogFragment;
 import com.dam.goality.dialogFragments.DatePickerFragment;
 import com.dam.goality.dialogFragments.TimePickerFragment;
 import com.dam.goality.model.Equipo;
+import com.google.android.material.chip.Chip;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -38,8 +39,9 @@ public class AddPartido extends AppCompatActivity implements TimePickerDialog.On
     TextView horaPartido;
     TextView fechaPartido;
     Spinner spnVisitante;
-    TextInputLayout tilLocal;
-    AutoCompleteTextView atvLocal;
+
+    //    TextInputLayout tilLocal;
+//    AutoCompleteTextView atvLocal;
     ArrayAdapter<String> adapter;
     TextInputLayout tilVisitante;
     AutoCompleteTextView atvVisitante;
@@ -49,8 +51,14 @@ public class AddPartido extends AppCompatActivity implements TimePickerDialog.On
 
     DatabaseReference reference;
 
+    Chip cpLocal;
+    Chip cpVisitante;
+
     int posLocal;
     int posVisitante;
+
+    String condicion;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,14 +69,34 @@ public class AddPartido extends AppCompatActivity implements TimePickerDialog.On
         horaPartido = findViewById(R.id.horaPartido);
         fechaPartido = findViewById(R.id.fechaPartido);
 
+        cpLocal = findViewById(R.id.cpLocal);
+        cpLocal.setChecked(true);
+        cpVisitante = findViewById(R.id.cpVisitante);
+
         listaEquipos = new ArrayList<>();
 //        listaEquipos.add("Equipo 1");
 //        listaEquipos.add("Equipo 2");
 //        listaEquipos.add("Equipo 3");
 
+        // Comprobar si se ha seleccionado local o visitante
+        cpLocal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                condicion = "Local";
+            }
+        });
+        
+        cpVisitante.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                condicion = "Visitante";
+            }
+        });
+
         cargarEquipos();
 
         // Drop down equipo local
+        /*
         tilLocal = findViewById(R.id.tilLocal);
         atvLocal = findViewById(R.id.atvLocal);
         adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, listaEquipos);
@@ -80,6 +108,7 @@ public class AddPartido extends AppCompatActivity implements TimePickerDialog.On
                 posLocal = position;
             }
         });
+         */
 
         // Drop down equipo visitante
         tilVisitante = findViewById(R.id.tilVisitante);
@@ -93,6 +122,8 @@ public class AddPartido extends AppCompatActivity implements TimePickerDialog.On
                 posVisitante = position;
             }
         });
+
+
 
     }
 
@@ -119,10 +150,14 @@ public class AddPartido extends AppCompatActivity implements TimePickerDialog.On
             }
         });
 
+        if (cpLocal.isChecked()) {
+
+        }
+
     }
 
     public void habilitarBotones(Boolean b) {
-        atvLocal.setEnabled(b);
+//        atvLocal.setEnabled(b);
         atvVisitante.setEnabled(!b);
     }
 
@@ -153,26 +188,30 @@ public class AddPartido extends AppCompatActivity implements TimePickerDialog.On
 
 
     public void aceptar(View view) {
-        String local = atvLocal.getText().toString();
-        String visitante = atvVisitante.getText().toString();
+//        String local = atvLocal.getText().toString();
+        String contrincante = atvVisitante.getText().toString();
         String hora = horaPartido.getText().toString();
         String fecha = fechaPartido.getText().toString();
 
-        if (local.isEmpty() || visitante.isEmpty() || hora.isEmpty() || fecha.isEmpty()) {
+        if (contrincante.isEmpty() || hora.isEmpty() || fecha.isEmpty()) {
             Toast.makeText(this, "Debe llenar todos los campos", Toast.LENGTH_SHORT).show();
         } else {
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Partidos");
             String partidoId = reference.push().getKey();
 
+//            hashMap.put("local", local);
             HashMap<String, Object> hashMap = new HashMap<>();
             hashMap.put("id", partidoId);
-            hashMap.put("local", local);
-            hashMap.put("imgLocal", lista.get(posLocal).getImageUrl());
-            hashMap.put("visitante", visitante);
-            hashMap.put("imgVisitante", lista.get(posVisitante).getImageUrl());
+            hashMap.put("miEquipo", "Atlético Chopera Alcobendas 04 A");
+            hashMap.put("contrincante", contrincante);
+            hashMap.put("imgMiEquipo", "https://firebasestorage.googleapis.com/v0/b/goality-753fc.appspot.com/o/Equipos%2FATLETICO%20CHOPERA%20ALCOBENDAS%2004%20A.jpg?alt=media&token=a1b6a3e0-359c-4c02-8851-78e87548aa3f");
+            hashMap.put("imgContrincante", lista.get(posVisitante).getImageUrl());
+            hashMap.put("golesMiEquipo", 0);
+            hashMap.put("golesContrincante", 0);
+            hashMap.put("condicion", condicion);
             hashMap.put("horaPartido", hora);
             hashMap.put("fechaPartido", fecha);
-            hashMap.put("estadio", lista.get(posLocal).getEstadio());
+            hashMap.put("estadio", (cpLocal.isChecked() ? "Alcobendas - Fuentelucha" : lista.get(posVisitante).getEstadio()));
 
             reference.child(partidoId).setValue(hashMap);
 

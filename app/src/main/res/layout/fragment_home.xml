@@ -1,13 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background3"
     tools:context=".fragments.PartidoFragment">
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/svChipsGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        app:singleSelection="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/cpPartidos"
+            style="@style/CustomChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Todos" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/cpLocal"
+            style="@style/CustomChipStyle_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Local" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/cpVisitante"
+            style="@style/CustomChipStyle_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Visitante" />
+
+    </com.google.android.material.chip.ChipGroup>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/svChipsGroup"
         android:background="@color/background3">
 
         <!--
@@ -33,4 +66,4 @@
     </RelativeLayout>
 
 
-</FrameLayout>
+</RelativeLayout>

@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import com.dam.goality.fragments.AddFragment;
 import com.dam.goality.fragments.EntrenamientoFragment;
 import com.dam.goality.fragments.EstadisticasFragment;
+import com.dam.goality.fragments.EstadisticasPrueba;
 import com.dam.goality.fragments.ListaFragment;
 import com.dam.goality.fragments.PartidoFragment;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -65,11 +66,13 @@ public class MainActivityStaff extends AppCompatActivity {
 //                }
 //            }
 //        });
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 bottomSheetDialog = new BottomSheetDialog(MainActivityStaff.this, R.style.BottomSheetTheme);
                 View sheetView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.bottom_sheet_layout, (ViewGroup) findViewById(R.id.bottom_sheet));
+
                 sheetView.findViewById(R.id.addJugador).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -161,6 +164,8 @@ public class MainActivityStaff extends AppCompatActivity {
             } else if (item.getItemId() == R.id.estadisticas) {
                 titleToolbar.setText("Estadísticas");
                 selectedFragment = new EstadisticasFragment();
+            } else if (item.getItemId() == R.id.est) {
+                selectedFragment = new EstadisticasPrueba();
             }
 
             if (selectedFragment != null) {

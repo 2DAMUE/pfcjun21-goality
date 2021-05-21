@@ -80,12 +80,23 @@ public class PartidosAdapter
         }
 
         public void bindItem(Partido partido) {
-            Glide.with(ivLocal).load(partido.getImgLocal())
-                    .into(ivLocal);
-            Glide.with(ivVisitante).load(partido.getImgVisitante())
-                    .into(ivVisitante);
-            tvLocal.setText(partido.getLocal());
-            tvVisitante.setText(partido.getVisitante());
+
+            if (partido.getCondicion().equalsIgnoreCase("Visitante")) {
+                Glide.with(ivLocal).load(partido.getImgContrincante())
+                        .into(ivLocal);
+                Glide.with(ivVisitante).load(partido.getImgMiEquipo())
+                        .into(ivVisitante);
+                tvLocal.setText(partido.getContrincante());
+                tvVisitante.setText(partido.getMiEquipo());
+            } else {
+                Glide.with(ivLocal).load(partido.getImgMiEquipo())
+                        .into(ivLocal);
+                Glide.with(ivVisitante).load(partido.getImgContrincante())
+                        .into(ivVisitante);
+                tvLocal.setText(partido.getMiEquipo());
+                tvVisitante.setText(partido.getContrincante());
+            }
+
             tvHoraPartido.setText(partido.getHoraPartido());
             tvFechaPartido.setText(partido.getFechaPartido());
         }

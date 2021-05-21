@@ -51,8 +51,6 @@ public class LoginActivity extends AppCompatActivity {
         btnStaffLogin = findViewById(R.id.btnStaffLogin);
         auth = FirebaseAuth.getInstance();
         btnJugadorLogin.setChecked(true);
-        tilLocal = findViewById(R.id.tilLocal);
-        atvLocal = findViewById(R.id.atvLocal);
         tilVisitante = findViewById(R.id.tilVisitante);
         atvVisitante = findViewById(R.id.atvVisitante);
     }

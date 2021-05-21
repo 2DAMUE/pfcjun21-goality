@@ -13,11 +13,14 @@
     <color name="background2">#394352</color>
     <color name="background3">#EDF0F7</color>
     <color name="background4">#CFD9E0</color>
+    <color name="background5">#E0E6EB</color>
     <color name="boton">#D4DBE5</color>
     <color name="boton_texto">#9E9EA7</color>
 
     <color name="text_hint">#898B99</color>
-    <color name="primary">#198cff</color>
+
+    <!-- <color name="primary">#198cff</color> -->
+    <color name="primary">#5CC4EA</color>
     <color name="seconday">#24272A</color>
     <color name="dark">#0060cb</color>
     <color name="green">#08EC91</color>

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,7 +14,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.dam.goality.AddEntrenamiento;
 import com.dam.goality.EntrenamientoDetailActivity;
 import com.dam.goality.R;
 import com.dam.goality.adapter.EntrenamientoAdapter;
@@ -31,7 +29,7 @@ import java.util.ArrayList;
 public class EntrenamientoFragment extends Fragment {
 
     DatabaseReference mDatabase;
-//    Button btnAddEquipo;
+    //    Button btnAddEquipo;
     RecyclerView rvEntrenamientos;
     ArrayList<Entrenamiento> listaEntrenamientos;
     EntrenamientoAdapter adapter;
@@ -86,7 +84,7 @@ public class EntrenamientoFragment extends Fragment {
                         int i = rvEntrenamientos.getChildAdapterPosition(v);
                         Entrenamiento entrenamiento = listaEntrenamientos.get(i);
 
-                        Toast.makeText(getContext(), entrenamiento.toString(), Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getContext(), entrenamiento.toString(), Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent(getContext(), EntrenamientoDetailActivity.class);
                         intent.putExtra("ENTRENAMIENTO", entrenamiento);

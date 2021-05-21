@@ -25,4 +25,10 @@
         android:title="Estadísticas"
         app:showAsAction="always"/>
 
+    <item
+        android:id="@+id/est"
+        android:icon="@drawable/ic_estadisticas"
+        android:title="Estadísticas"
+        app:showAsAction="always"/>
+
 </menu>
