@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background3"
+    tools:context=".fragments.AdministracionFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/svChipsGroup"
+        android:background="@color/background3"
+        android:padding="24dp">
+
+        <!--
+        <LinearLayout
+            android:id="@+id/ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="40dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Partidos jugados: "
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/tvPartidosTotales"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/montserrat"
+                    android:text="0"
+                    android:textSize="22sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Partidos ganados:"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvPartidosGanados"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/montserrat"
+                    android:text="0"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Partidos empatados:"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvPartidosEmpatados"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/montserrat"
+                    android:text="0"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Partidos perdidos"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvPartidosPertidos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/montserrat"
+                    android:text="0"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+        -->
+
+        <RelativeLayout
+            android:id="@+id/rl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background3">
+
+            <RelativeLayout
+                android:id="@+id/rl1"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_activity_5">
+
+                <TextView
+                    android:id="@+id/ganados"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Ganados" />
+
+                <TextView
+                    android:id="@+id/tvPartidosGanados"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ganados"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textSize="32sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/bg_activity_5">
+
+                <TextView
+                    android:id="@+id/empatados"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Empatados" />
+
+                <TextView
+                    android:id="@+id/tvPartidosEmpatados"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/empatados"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textSize="32sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl3"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/bg_activity_5">
+
+                <TextView
+                    android:id="@+id/perdidos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Perdidos" />
+
+                <TextView
+                    android:id="@+id/tvPartidosPertidos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/perdidos"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textSize="32sp" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pieChart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/rl"
+            android:layout_marginBottom="40dp" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
