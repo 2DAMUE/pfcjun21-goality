@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
@@ -30,6 +31,7 @@ public class AddEntrenamiento extends AppCompatActivity implements TimePickerDia
     TextView fechaEntrenamiento;
     Slider slider;
     EditText etDescripcion;
+    TextView duracionEntrenamiento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +42,17 @@ public class AddEntrenamiento extends AppCompatActivity implements TimePickerDia
         fechaEntrenamiento = findViewById(R.id.fechaEntrenamiento);
         slider = findViewById(R.id.slider);
         etDescripcion = findViewById(R.id.etDescripcion);
+        duracionEntrenamiento = findViewById(R.id.duracionEntrenamiento);
+
+        slider.addOnChangeListener(new Slider.OnChangeListener() {
+            @Override
+            public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
+                duracionEntrenamiento.setText(String.valueOf(value));
+            }
+        });
 
     }
+
 
     public void seleccionarHora(View view) {
         DialogFragment timePicker = new TimePickerFragment();

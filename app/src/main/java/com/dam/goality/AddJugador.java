@@ -183,7 +183,7 @@ public class AddJugador extends AppCompatActivity {
         String peso = etPeso.getText().toString().trim();
         String estatura = etEstatura.getText().toString().trim();
 
-        if (nombre.isEmpty() || apellidos.isEmpty() || fecha.isEmpty() || npEdad.getValue() == 0 || npEdad.getValue() == 0
+        if (nombre.isEmpty() || apellidos.isEmpty() || fecha.isEmpty() || npEdad.getValue() == 0 || npDorsal.getValue() == 0
                 || nacionalidad.equalsIgnoreCase("Selecciona el país")
                 || posicion.equalsIgnoreCase("Selecciona la posición")
                 || peso.isEmpty() || estatura.isEmpty()) {
@@ -283,4 +283,5 @@ public class AddJugador extends AppCompatActivity {
         setResult(RESULT_CANCELED);
         finish();
     }
+
 }

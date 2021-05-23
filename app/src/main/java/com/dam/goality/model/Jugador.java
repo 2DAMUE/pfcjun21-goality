@@ -8,13 +8,15 @@ public class Jugador extends Usuario {
     private double peso;
     private double estatura;
     private int dorsal;
+    private String role;
 
-    public Jugador(String id, String nombre, String apellidos, String fotoPerfilUrl, int edad, String fechaNacimiento, String nacionalidad, String posicion, double peso, double estatura, int dorsal) {
+    public Jugador(String id, String nombre, String apellidos, String fotoPerfilUrl, int edad, String fechaNacimiento, String nacionalidad, String posicion, double peso, double estatura, int dorsal, String role) {
         super(id, nombre, apellidos, fotoPerfilUrl, edad, fechaNacimiento, nacionalidad);
         this.posicion = posicion;
         this.peso = peso;
         this.estatura = estatura;
         this.dorsal = dorsal;
+        this.role = role;
     }
 
     public Jugador() {
@@ -58,6 +60,7 @@ public class Jugador extends Usuario {
         this.peso = in.readDouble();
         this.estatura = in.readDouble();
         this.dorsal = in.readInt();
+        this.role = in.readString();
     }
 
 
@@ -86,6 +89,7 @@ public class Jugador extends Usuario {
         dest.writeDouble(peso);
         dest.writeDouble(estatura);
         dest.writeInt(dorsal);
+        dest.writeString(role);
     }
 
     @Override

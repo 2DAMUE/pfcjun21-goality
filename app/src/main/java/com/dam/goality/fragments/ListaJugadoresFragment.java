@@ -155,6 +155,9 @@ public class ListaJugadoresFragment extends Fragment {
                     }
                 });
 
+                if (listaJugadores.isEmpty()) {
+                    rvJugadores.setVisibility(View.INVISIBLE);
+                }
                 adapter.notifyDataSetChanged();
             }
 
@@ -198,6 +201,7 @@ public class ListaJugadoresFragment extends Fragment {
                 });
 
                 adapter.notifyDataSetChanged();
+
             }
         }
 

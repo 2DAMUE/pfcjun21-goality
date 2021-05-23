@@ -32,10 +32,6 @@ public class LoginActivity extends AppCompatActivity {
     EditText emailLogin;
     EditText passwordLogin;
     FirebaseAuth auth;
-    RadioButton btnJugadorLogin;
-    RadioButton btnStaffLogin;
-    TextInputLayout tilLocal;
-    AutoCompleteTextView atvLocal;
     TextInputLayout tilVisitante;
     AutoCompleteTextView atvVisitante;
 
@@ -47,10 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         cl = findViewById(R.id.cl);
         emailLogin = findViewById(R.id.emailLogin);
         passwordLogin = findViewById(R.id.passwordLogin);
-        btnJugadorLogin = findViewById(R.id.btnJugadorLogin);
-        btnStaffLogin = findViewById(R.id.btnStaffLogin);
         auth = FirebaseAuth.getInstance();
-        btnJugadorLogin.setChecked(true);
         tilVisitante = findViewById(R.id.tilVisitante);
         atvVisitante = findViewById(R.id.atvVisitante);
     }
@@ -62,7 +55,6 @@ public class LoginActivity extends AppCompatActivity {
 
         String sEmail = emailLogin.getText().toString().trim();
         String sPass = passwordLogin.getText().toString().trim();
-        String opcion = (btnJugadorLogin.isChecked()) ? "Jugador" : "Staff";
 
         if (sEmail.isEmpty() || sPass.isEmpty()) {
 //            Toast.makeText(this, "Debes rellenar todos los campos", Toast.LENGTH_SHORT).show();
@@ -85,106 +77,27 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+                                DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("CuerpoTecnico")
+                                        .child(auth.getCurrentUser().getUid());
 
+                                reference.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        pd.dismiss();
+                                        Intent i = new Intent(LoginActivity.this, MainActivityStaff.class);
+                                        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(i);
+                                        finish();
+                                    }
 
-                                if (btnJugadorLogin.isChecked()) {
-                                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Jugadores")
-                                            .child(auth.getCurrentUser().getUid()).child("role");
-
-                                    reference.addValueEventListener(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                            pd.dismiss();
-
-                                            try {
-                                                String userRole = snapshot.getValue().toString();
-                                                Toast.makeText(LoginActivity.this, userRole, Toast.LENGTH_SHORT).show();
-
-                                                Intent i;
-                                                i = new Intent(LoginActivity.this, MainActivityJugador.class);
-                                                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                                startActivity(i);
-                                                finish();
-
-                                            } catch (NullPointerException e) {
-//                                                Toast.makeText(LoginActivity.this, "El usuario ingresado no se encuentra en" +
-//                                                        " la lista de jugadores, tal vez pertenece al Staff", Toast.LENGTH_SHORT).show();
-
-                                                Snackbar.make(cl, "El correo ingresado no se encuentra en la lista" +
-                                                        " de jugadores", Snackbar.LENGTH_SHORT)
-                                                        .setAction("OK", new View.OnClickListener() {
-                                                            @Override
-                                                            public void onClick(View v) {
-
-                                                            }
-                                                        })
-                                                        .setActionTextColor(getResources().getColor(R.color.primary))
-                                                        .show();
-                                            }
-                                        }
-
-                                        @Override
-                                        public void onCancelled(@NonNull DatabaseError error) {
-                                            pd.dismiss();
-                                        }
-                                    });
-                                } else {
-                                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("CuerpoTecnico")
-                                            .child(auth.getCurrentUser().getUid()).child("role");
-
-                                    reference.addValueEventListener(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                            pd.dismiss();
-
-                                            try {
-
-                                                String userRole = snapshot.getValue().toString();
-
-                                                Intent i;
-                                                i = new Intent(LoginActivity.this, MainActivityStaff.class);
-                                                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                                startActivity(i);
-                                                finish();
-
-                                            } catch (NullPointerException e) {
-                                                Toast.makeText(LoginActivity.this, "El usuario ingresado no se encuentra en" +
-                                                        " la lista de staff, tal vez pertenece a los jugadores", Toast.LENGTH_SHORT).show();
-
-                                                Snackbar.make(cl, "El correo ingresado no se encuentra en la lista" +
-                                                        " de cuerpo técnico", Snackbar.LENGTH_SHORT)
-                                                        .setAction("OK", new View.OnClickListener() {
-                                                            @Override
-                                                            public void onClick(View v) {
-
-                                                            }
-                                                        })
-                                                        .setActionTextColor(getResources().getColor(R.color.primary))
-                                                        .show();
-                                            }
-                                        }
-
-                                        @Override
-                                        public void onCancelled(@NonNull DatabaseError error) {
-                                            pd.dismiss();
-                                        }
-                                    });
-                                }
-
-
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+                                        pd.dismiss();
+                                    }
+                                });
                             } else {
                                 pd.dismiss();
-//                                Toast.makeText(LoginActivity.this, "La autenticación ha fallado", Toast.LENGTH_SHORT).show();
-
-                                Snackbar.make(cl, "Email o contraseña incorrectos", Snackbar.LENGTH_SHORT)
-                                        .setAction("OK", new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-
-                                            }
-                                        })
-                                        .setActionTextColor(getResources().getColor(R.color.primary))
-                                        .show();
+                                Toast.makeText(LoginActivity.this, "La autenticación ha fallado", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });

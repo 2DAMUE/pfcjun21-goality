@@ -71,7 +71,6 @@ public class SignUpCuerpoTecnico extends AppCompatActivity {
     String apellido;
     String email;
     String password;
-    String tipo;
 
     FirebaseAuth auth;
 
@@ -98,7 +97,6 @@ public class SignUpCuerpoTecnico extends AppCompatActivity {
         apellido = getIntent().getStringExtra("APELLIDO");
         email = getIntent().getStringExtra("EMAIL");
         password = getIntent().getStringExtra("PASSWORD");
-        tipo = getIntent().getStringExtra("TIPO");
 
         // Drop down menu país nacimiento
         tilNacimiento = findViewById(R.id.tilNacimiento);
@@ -218,7 +216,6 @@ public class SignUpCuerpoTecnico extends AppCompatActivity {
                             hashMap.put("fechaNacimiento", fecha);
                             hashMap.put("nacionalidad", paisNacimiento);
                             hashMap.put("cargo", cargo);
-                            hashMap.put("role", tipo);
                             reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {

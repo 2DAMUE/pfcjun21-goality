@@ -1,6 +1,8 @@
 package com.dam.goality;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,12 +14,13 @@ import com.dam.goality.model.CuerpoTecnico;
 public class CuerpoTecnicoDetailActivity extends AppCompatActivity {
 
     ImageView ivFotoCTecnico;
-    TextView tvNombreCT;
-    TextView tvApellidoCT;
+    TextView tvNombre;
     TextView tvNacimientoCT;
-    TextView tvPaisJugadorCT;
+    TextView tvPaisNacimiento;
     TextView tvEdadCT;
-    TextView tvCargoCT;
+    TextView tvCargo;
+
+    CuerpoTecnico ct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,32 +28,27 @@ public class CuerpoTecnicoDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cuerpo_tecnico_detail);
 
         ivFotoCTecnico = findViewById(R.id.ivFotoCTecnico);
-        tvNombreCT = findViewById(R.id.tvNombreCT);
-        tvApellidoCT = findViewById(R.id.tvApellidoCT);
+        tvNombre = findViewById(R.id.tvNombre);
         tvNacimientoCT = findViewById(R.id.tvNacimientoCT);
-        tvPaisJugadorCT = findViewById(R.id.tvPaisJugadorCT);
-        tvEdadCT = findViewById(R.id.tvEdadJugador);
-        tvCargoCT = findViewById(R.id.tvCargoCT);
+        tvPaisNacimiento = findViewById(R.id.tvPaisNacimiento);
+        tvEdadCT = findViewById(R.id.tvEdadCT);
+        tvCargo = findViewById(R.id.tvCargo);
 
-        CuerpoTecnico ct = getIntent().getParcelableExtra("STAFF");
+        ct = getIntent().getParcelableExtra("CUERPO_TECNICO");
 
-        String apellido = getIntent().getStringExtra("APEL");
-        String cargo = getIntent().getStringExtra("CARG");
-//        String edad = getIntent().getStringExtra("ED");
-        String nacimiento = getIntent().getStringExtra("NACI");
-        String url = getIntent().getStringExtra("URL");
-        String nacionalidad = getIntent().getStringExtra("NACIONALIDAD");
-        String nombre = getIntent().getStringExtra("NOMBRE");
-
-        // Cargar los datos del cuerpo técnico
-
-        Glide.with(ivFotoCTecnico).load(url)
+        Glide.with(ivFotoCTecnico).load(ct.getFotoPerfilUrl())
                 .into(ivFotoCTecnico);
-        tvNombreCT.setText(nombre);
-        tvApellidoCT.setText(apellido);
-        tvNacimientoCT.setText(nacimiento);
-        tvPaisJugadorCT.setText(nacionalidad);
-        tvCargoCT.setText(cargo);
+        tvNombre.setText(ct.getNombre() + " - " + ct.getApellidos());
+        tvNacimientoCT.setText(ct.getFechaNacimiento());
+        tvPaisNacimiento.setText(ct.getNacionalidad());
+        tvCargo.setText(ct.getCargo());
+        tvEdadCT.setText(String.valueOf(ct.getEdad()));
 
+    }
+
+    public void editarPerfilCT(View view) {
+        Intent i = new Intent(CuerpoTecnicoDetailActivity.this, EditCuerpoTecnicoActivity.class);
+        i.putExtra("CUERPO_TECNICO", ct);
+        startActivityForResult(i, 2);
     }
 }

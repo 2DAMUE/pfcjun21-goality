@@ -48,12 +48,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            app:selectionRequired="true"
             app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/cpLocal"
                 style="@style/CustomChipStyle"
-                android:layout_width="88dp"
+                android:layout_width="110dp"
                 android:layout_height="wrap_content"
                 android:text="Local"
                 android:textAlignment="center" />
@@ -61,7 +62,7 @@
             <com.google.android.material.chip.Chip
                 android:id="@+id/cpVisitante"
                 style="@style/CustomChipStyle_1"
-                android:layout_width="88dp"
+                android:layout_width="110dp"
                 android:layout_height="wrap_content"
                 android:text="Visitante"
                 android:textAlignment="center" />
@@ -102,8 +103,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/svChipsGroup"
-            android:layout_weight="1"
             android:layout_marginTop="32dp"
+            android:layout_weight="1"
             android:fontFamily="@font/montserrat_bold"
             android:gravity="left"
             android:text="Selecciona el contrincante:"

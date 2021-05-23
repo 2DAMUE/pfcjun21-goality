@@ -25,7 +25,7 @@
         android:id="@+id/ilEmailLgn"
         android:layout_width="325dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="160dp"
         android:textColorHint="@color/text_hint"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
@@ -71,52 +71,6 @@
             android:textColorHint="@color/text_hint" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <RadioGroup
-        android:id="@+id/toggle"
-        android:layout_width="325dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/pink_out_line"
-        android:checkedButton="@+id/offer"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ilPassLogin">
-
-        <RadioButton
-            android:id="@+id/btnJugadorLogin"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="1dp"
-            android:layout_weight="1"
-            android:background="@drawable/toggle_widget_background"
-            android:button="@null"
-            android:fontFamily="@font/montserrat"
-            android:gravity="center"
-            android:text="Jugador"
-            android:textColor="@color/statelist" />
-
-        <RadioButton
-            android:id="@+id/btnStaffLogin"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="1dp"
-            android:layout_marginRight="1dp"
-            android:layout_marginBottom="1dp"
-            android:layout_weight="1"
-            android:background="@drawable/toggle_widget_background"
-            android:button="@null"
-            android:fontFamily="@font/montserrat"
-            android:gravity="center"
-            android:text="Staff"
-            android:textColor="@color/statelist" />
-    </RadioGroup>
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLogin"
         android:layout_width="325dp"
@@ -129,7 +83,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toggle" />
+        app:layout_constraintTop_toBottomOf="@id/ilPassLogin" />
 
     <LinearLayout
         android:id="@+id/signUp"

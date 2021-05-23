@@ -1,6 +1,7 @@
 package com.dam.goality.adapter;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,6 +69,7 @@ public class PartidosAdapter
         TextView tvVisitante;
         TextView tvHoraPartido;
         TextView tvFechaPartido;
+        TextView vs;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -77,6 +79,7 @@ public class PartidosAdapter
             tvVisitante = itemView.findViewById(R.id.tvVisitante);
             tvHoraPartido = itemView.findViewById(R.id.tvHoraPartido);
             tvFechaPartido = itemView.findViewById(R.id.tvFechaPartido);
+            vs = itemView.findViewById(R.id.vs);
         }
 
         public void bindItem(Partido partido) {
@@ -88,6 +91,17 @@ public class PartidosAdapter
                         .into(ivVisitante);
                 tvLocal.setText(partido.getContrincante());
                 tvVisitante.setText(partido.getMiEquipo());
+
+                if (partido.getGolesMiEquipo() >= 0 && partido.getGolesContrincante() >= 0) {
+                    Resources res = mContext.getResources();
+                    vs.setText(String.format(res.getString(R.string.vs),
+                            String.valueOf(partido.getGolesContrincante()),
+                            String.valueOf(partido.getGolesMiEquipo())));
+                } else if (partido.getGolesMiEquipo() < 0 && partido.getGolesContrincante() < 0) {
+                    Resources res = mContext.getResources();
+                    vs.setText(String.format(res.getString(R.string.vs), "-", "-"));
+                }
+
             } else {
                 Glide.with(ivLocal).load(partido.getImgMiEquipo())
                         .into(ivLocal);
@@ -95,6 +109,16 @@ public class PartidosAdapter
                         .into(ivVisitante);
                 tvLocal.setText(partido.getMiEquipo());
                 tvVisitante.setText(partido.getContrincante());
+
+                if (partido.getGolesMiEquipo() >= 0 && partido.getGolesContrincante() >= 0) {
+                    Resources res = mContext.getResources();
+                    vs.setText(String.format(res.getString(R.string.vs),
+                            String.valueOf(partido.getGolesMiEquipo()),
+                            String.valueOf(partido.getGolesContrincante())));
+                } else if (partido.getGolesMiEquipo() < 0 && partido.getGolesContrincante() < 0) {
+                    Resources res = mContext.getResources();
+                    vs.setText(String.format(res.getString(R.string.vs), "-", "-"));
+                }
             }
 
             tvHoraPartido.setText(partido.getHoraPartido());

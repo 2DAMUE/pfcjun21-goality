@@ -37,6 +37,7 @@
                 android:id="@+id/svChipsGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:selectionRequired="true"
                 app:singleSelection="true">
 
                 <com.google.android.material.chip.Chip

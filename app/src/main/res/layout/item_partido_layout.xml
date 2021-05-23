@@ -12,8 +12,8 @@
 
         <ImageView
             android:id="@+id/ivLocal"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginLeft="48dp"
             android:layout_marginTop="16dp" />
 
@@ -33,15 +33,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="VS."
-            android:textSize="22sp" />
+            android:text="@string/vs"
+            android:textSize="32sp" />
 
         <ImageView
             android:id="@+id/ivVisitante"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="16dp"
             android:layout_marginRight="48dp" />

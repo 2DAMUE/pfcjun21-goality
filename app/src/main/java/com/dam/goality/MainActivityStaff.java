@@ -17,9 +17,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.dam.goality.fragments.AddFragment;
+import com.dam.goality.fragments.AdministracionFragment;
 import com.dam.goality.fragments.EntrenamientoFragment;
 import com.dam.goality.fragments.EstadisticasFragment;
-import com.dam.goality.fragments.EstadisticasPrueba;
 import com.dam.goality.fragments.ListaFragment;
 import com.dam.goality.fragments.PartidoFragment;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -45,9 +45,6 @@ public class MainActivityStaff extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_staff);
 
-//        bottomNavigation = findViewById(R.id.bottomNavigation);
-//        bottomNavigation.setOnNavigationItemSelectedListener(listener);
-
         firebaseAuth = FirebaseAuth.getInstance();
         selectedFragment = new PartidoFragment();
         titleToolbar = findViewById(R.id.titleToolbar);
@@ -57,16 +54,6 @@ public class MainActivityStaff extends AppCompatActivity {
         bottom_app_bar = findViewById(R.id.bottom_app_bar);
         bottom_app_bar.setOnMenuItemClickListener(listener2);
         fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                selectedFragment = new AddFragment();
-//                if (selectedFragment != null) {
-//                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, selectedFragment).commit();
-//                }
-//            }
-//        });
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,6 +125,9 @@ public class MainActivityStaff extends AppCompatActivity {
                     }
                 });
                 alertDialog.create().show();
+            } else if (item.getItemId() == R.id.editarPerfil) {
+                Intent i = new Intent(MainActivityStaff.this, MiPerfilActivity.class);
+                startActivity(i);
             }
             return true;
         }
@@ -163,9 +153,9 @@ public class MainActivityStaff extends AppCompatActivity {
 
             } else if (item.getItemId() == R.id.estadisticas) {
                 titleToolbar.setText("Estadísticas");
-                selectedFragment = new EstadisticasFragment();
+                selectedFragment = new AdministracionFragment();
             } else if (item.getItemId() == R.id.est) {
-                selectedFragment = new EstadisticasPrueba();
+                selectedFragment = new EstadisticasFragment();
             }
 
             if (selectedFragment != null) {

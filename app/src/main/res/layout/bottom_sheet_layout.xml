@@ -19,14 +19,14 @@
         android:layout_height="1dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@android:color/darker_gray" />
+        android:background="#FFFFFFFF" />
 
     <LinearLayout
         android:id="@+id/addJugador"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:orientation="horizontal">
 
         <ImageView
@@ -39,24 +39,17 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:fontFamily="@font/montserrat_bold"
-            android:textSize="16sp"
+
             android:text="Nuevo jugador" />
 
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@android:color/darker_gray" />
 
     <LinearLayout
         android:id="@+id/addCuerpoTecnico"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:orientation="horizontal">
 
         <ImageView
@@ -73,19 +66,12 @@
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@android:color/darker_gray" />
-
     <LinearLayout
         android:id="@+id/addPartido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:orientation="horizontal">
 
         <ImageView
@@ -102,18 +88,12 @@
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@android:color/darker_gray" />
-
     <LinearLayout
         android:id="@+id/addEntrenamiento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:orientation="horizontal">
 
         <ImageView

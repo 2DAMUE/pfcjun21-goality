@@ -24,8 +24,7 @@
             android:layout_marginTop="16dp"
             android:layout_toRightOf="@id/ivFoto"
             android:fontFamily="@font/montserrat_bold"
-            android:text="Nombre Jugador"
-            android:textSize="18sp" />
+            android:text="Nombre Jugador" />
 
         <RelativeLayout
             android:id="@+id/rlDorsal"

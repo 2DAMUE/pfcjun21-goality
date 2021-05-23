@@ -18,7 +18,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
-import com.dam.goality.dialogFragments.DatePickerFragment;
 import com.dam.goality.dialogFragments.TimePickerFragment;
 import com.dam.goality.model.Equipo;
 import com.google.android.material.chip.Chip;
@@ -85,7 +84,7 @@ public class AddPartido extends AppCompatActivity implements TimePickerDialog.On
                 condicion = "Local";
             }
         });
-        
+
         cpVisitante.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,21 +93,6 @@ public class AddPartido extends AppCompatActivity implements TimePickerDialog.On
         });
 
         cargarEquipos();
-
-        // Drop down equipo local
-        /*
-        tilLocal = findViewById(R.id.tilLocal);
-        atvLocal = findViewById(R.id.atvLocal);
-        adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, listaEquipos);
-        atvLocal.setAdapter(adapter);
-        atvLocal.setThreshold(1);
-        atvLocal.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                posLocal = position;
-            }
-        });
-         */
 
         // Drop down equipo visitante
         tilVisitante = findViewById(R.id.tilVisitante);
@@ -122,8 +106,6 @@ public class AddPartido extends AppCompatActivity implements TimePickerDialog.On
                 posVisitante = position;
             }
         });
-
-
 
     }
 
@@ -167,8 +149,18 @@ public class AddPartido extends AppCompatActivity implements TimePickerDialog.On
     }
 
     public void seleccionarFecha(View view) {
-        DialogFragment datePicker = new DatePickerFragment();
-        datePicker.show(getSupportFragmentManager(), "date picker");
+//        DialogFragment datePicker = new DatePickerFragment();
+//        datePicker.show(getSupportFragmentManager(), "date picker");
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                this,
+                this,
+                Calendar.getInstance().get(Calendar.YEAR),
+                Calendar.getInstance().get(Calendar.MONTH),
+                Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+        );
+        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+        datePickerDialog.show();
     }
 
     @Override
@@ -179,6 +171,7 @@ public class AddPartido extends AppCompatActivity implements TimePickerDialog.On
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         Calendar c = Calendar.getInstance();
+        c.add(Calendar.DATE, -1);
         c.set(Calendar.YEAR, year);
         c.set(Calendar.MONTH, month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
@@ -198,6 +191,7 @@ public class AddPartido extends AppCompatActivity implements TimePickerDialog.On
         } else {
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Partidos");
             String partidoId = reference.push().getKey();
+            String cond = (cpLocal.isChecked()) ? "Local" : "Visitante";
 
 //            hashMap.put("local", local);
             HashMap<String, Object> hashMap = new HashMap<>();
@@ -206,9 +200,9 @@ public class AddPartido extends AppCompatActivity implements TimePickerDialog.On
             hashMap.put("contrincante", contrincante);
             hashMap.put("imgMiEquipo", "https://firebasestorage.googleapis.com/v0/b/goality-753fc.appspot.com/o/Equipos%2FATLETICO%20CHOPERA%20ALCOBENDAS%2004%20A.jpg?alt=media&token=a1b6a3e0-359c-4c02-8851-78e87548aa3f");
             hashMap.put("imgContrincante", lista.get(posVisitante).getImageUrl());
-            hashMap.put("golesMiEquipo", 0);
-            hashMap.put("golesContrincante", 0);
-            hashMap.put("condicion", condicion);
+            hashMap.put("golesMiEquipo", -1);
+            hashMap.put("golesContrincante", -1);
+            hashMap.put("condicion", cond);
             hashMap.put("horaPartido", hora);
             hashMap.put("fechaPartido", fecha);
             hashMap.put("estadio", (cpLocal.isChecked() ? "Alcobendas - Fuentelucha" : lista.get(posVisitante).getEstadio()));
@@ -219,6 +213,7 @@ public class AddPartido extends AppCompatActivity implements TimePickerDialog.On
             setResult(RESULT_OK, i);
             finish();
         }
+
     }
 
     public void cancelar(View view) {

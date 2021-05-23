@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.dam.goality.model.Partido;
 
+import java.text.ParseException;
+
 public class PartidoDetailActivity extends AppCompatActivity {
 
     ImageView ivLocal;
@@ -65,7 +67,7 @@ public class PartidoDetailActivity extends AppCompatActivity {
 
     }
 
-    public void agregarResultado(View view) {
+    public void agregarResultado(View view) throws ParseException {
         Intent i = new Intent(PartidoDetailActivity.this, AddResultado.class);
         i.putExtra("PARTIDO", p);
         startActivityForResult(i, 1);

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".AddPartido">
+    tools:context=".JugadorDetailActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/ivFotoJugador"
@@ -14,218 +14,286 @@
         android:layout_marginTop="32dp"
         android:src="@drawable/pp" />
 
+    <ImageView
+        android:id="@+id/editProfile"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="40dp"
+        android:background="@drawable/editprofile"
+        android:onClick="editarPerfil" />
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/tvNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivFotoJugador"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="Nombre Apellido"
+        android:textColor="@color/white"
+        android:textSize="22sp" />
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/ivFotoJugador"
-        android:layout_marginTop="40dp"
+        android:layout_below="@+id/tvNombre"
         android:background="@drawable/bg_activity"
         android:elevation="8dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="40dp">
 
-            <TextView
-                android:id="@+id/tvNombre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:layout_marginRight="8dp"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="Nombre"
-                android:textSize="26sp"
-                app:layout_constraintEnd_toStartOf="@id/guideline"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tvApellido"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="40dp"
-                android:fontFamily="@font/montserrat"
-                android:text="Apellido"
-                android:textSize="26sp"
-                app:layout_constraintStart_toEndOf="@id/guideline"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <View
-                android:id="@+id/separator"
+            <RelativeLayout
+                android:id="@+id/rl1"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="24dp"
-                android:background="@android:color/darker_gray"
-                app:layout_constraintTop_toBottomOf="@+id/tvApellido" />
-
-
-            <TextView
-                android:id="@+id/tvNacimiento"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginRight="8dp"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="Nacimiento:"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toStartOf="@id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/separator" />
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_activity_5"
+                android:padding="24dp">
 
-            <TextView
-                android:id="@+id/tvNacimientoJugador"
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/ivPosicion"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/clock" />
+
+                <TextView
+                    android:id="@+id/posicion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_toEndOf="@id/ivPosicion"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Posición:" />
+
+                <TextView
+                    android:id="@+id/tvPosicionJugador"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/posicion"
+                    android:layout_marginStart="32dp"
+                    android:layout_toEndOf="@id/ivPosicion"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Delantero" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="24dp"
-                android:fontFamily="@font/montserrat"
-                android:text="Nacimiento:"
-                app:layout_constraintStart_toEndOf="@id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/separator" />
+                android:layout_below="@id/rl1"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_activity_5"
+                android:padding="24dp">
 
-            <TextView
-                android:id="@+id/tvPais"
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/ivDorsal"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/clock" />
+
+                <TextView
+                    android:id="@+id/tvPesoDorsalJugador"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_toEndOf="@id/ivDorsal"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="11"
+                    android:textSize="32sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl3"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="8dp"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="País nacimiento:"
-                app:layout_constraintEnd_toStartOf="@id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/tvNacimientoJugador" />
+                android:layout_below="@id/rl2"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_activity_5"
+                android:padding="24dp">
 
-            <TextView
-                android:id="@+id/tvPaisJugador"
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/icEdad"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/clock" />
+
+                <TextView
+                    android:id="@+id/edad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_toEndOf="@id/icEdad"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Edad" />
+
+                <TextView
+                    android:id="@+id/tvEdad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/edad"
+                    android:layout_marginStart="32dp"
+                    android:layout_toEndOf="@id/icEdad"
+                    android:fontFamily="@font/montserrat"
+                    android:text="25 años" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl4"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/montserrat"
-                android:text="Nacionalidad"
-                app:layout_constraintStart_toEndOf="@id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/tvNacimientoJugador" />
+                android:layout_below="@id/rl3"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_activity_5"
+                android:padding="24dp">
 
-            <TextView
-                android:id="@+id/tvPosicion"
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/ivEstatura"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/clock" />
+
+                <TextView
+                    android:id="@+id/estatura"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_toEndOf="@id/ivEstatura"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Estatura:" />
+
+                <TextView
+                    android:id="@+id/tvEstatura"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/estatura"
+                    android:layout_marginStart="32dp"
+                    android:layout_toEndOf="@id/ivEstatura"
+                    android:fontFamily="@font/montserrat"
+                    android:text="187 centímetros" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl5"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="8dp"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="Posición:"
-                app:layout_constraintEnd_toStartOf="@id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/tvPaisJugador" />
+                android:layout_below="@id/rl4"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_activity_5"
+                android:padding="24dp">
 
-            <TextView
-                android:id="@+id/tvPosicionJugador"
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/ivPeso"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/clock" />
+
+                <TextView
+                    android:id="@+id/peso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_toEndOf="@id/ivPeso"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Peso" />
+
+                <TextView
+                    android:id="@+id/tvPeso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/peso"
+                    android:layout_marginStart="32dp"
+                    android:layout_toEndOf="@id/ivPeso"
+                    android:fontFamily="@font/montserrat"
+                    android:text="70 kilogramos" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl6"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/montserrat"
-                android:text="Posición"
-                app:layout_constraintStart_toEndOf="@id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/tvPaisJugador" />
+                android:layout_below="@id/rl5"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_activity_5"
+                android:padding="24dp">
 
-            <TextView
-                android:id="@+id/tvPeso"
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/icHora"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/clock" />
+
+                <TextView
+                    android:id="@+id/pais"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_toEndOf="@id/icHora"
+                    android:fontFamily="@font/montserrat"
+                    android:text="País de nacimiento" />
+
+                <TextView
+                    android:id="@+id/tvPaisJugador"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pais"
+                    android:layout_marginStart="32dp"
+                    android:layout_toEndOf="@id/icHora"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="País de nacimiento" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl7"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="8dp"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="Peso:"
-                app:layout_constraintEnd_toStartOf="@id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/tvPosicionJugador" />
+                android:layout_below="@+id/rl6"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_activity_5"
+                android:padding="24dp">
 
-            <TextView
-                android:id="@+id/tvPesoJugador"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/montserrat"
-                android:text="00"
-                app:layout_constraintStart_toEndOf="@id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/tvPosicionJugador" />
+                <ImageView
+                    android:id="@+id/ic2"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/clock" />
 
-            <TextView
-                android:id="@+id/tvEstatura"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="8dp"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="Estatura:"
-                app:layout_constraintEnd_toStartOf="@id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/tvPesoJugador" />
+                <TextView
+                    android:id="@+id/nacimiento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_toEndOf="@id/ic2"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Fecha de nacimiento" />
 
-            <TextView
-                android:id="@+id/tvPesoEstaturaJugador"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/montserrat"
-                android:text="100"
-                app:layout_constraintStart_toEndOf="@id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/tvPesoJugador" />
+                <TextView
+                    android:id="@+id/tvNacimientoJugador"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/nacimiento"
+                    android:layout_marginStart="32dp"
+                    android:layout_toEndOf="@id/ic2"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Fecha de nacimiento" />
 
-            <TextView
-                android:id="@+id/tvEdad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="8dp"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="Edad:"
-                app:layout_constraintEnd_toStartOf="@id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/tvPesoEstaturaJugador" />
+            </RelativeLayout>
 
-            <TextView
-                android:id="@+id/tvPesoEdadJugador"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/montserrat"
-                android:text="18"
-                app:layout_constraintStart_toEndOf="@id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/tvPesoEstaturaJugador" />
-
-            <TextView
-                android:id="@+id/tvDorsal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="8dp"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="Dorsal:"
-                app:layout_constraintEnd_toStartOf="@id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/tvPesoEdadJugador" />
-
-            <TextView
-                android:id="@+id/tvPesoDorsalJugador"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/montserrat"
-                android:text="22"
-                app:layout_constraintStart_toEndOf="@id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/tvPesoEdadJugador" />
+        </RelativeLayout>
 
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.5" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

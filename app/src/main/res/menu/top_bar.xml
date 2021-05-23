@@ -8,5 +8,11 @@
         android:title="Personas"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/editarPerfil"
+        android:icon="@drawable/ic_mi_perfil"
+        android:title="Personas"
+        app:showAsAction="always" />
+
 
 </menu>

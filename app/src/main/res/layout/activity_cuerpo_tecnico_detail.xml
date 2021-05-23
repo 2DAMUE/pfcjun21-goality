@@ -14,151 +14,186 @@
         android:layout_marginTop="32dp"
         android:src="@drawable/pp" />
 
+    <TextView
+        android:id="@+id/tvNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivFotoCTecnico"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="Nombre Apellido"
+        android:textColor="@color/white"
+        android:textSize="22sp" />
 
-    <RelativeLayout
+    <ImageView
+        android:id="@+id/editProfile"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="40dp"
+        android:background="@drawable/editprofile"
+        android:onClick="editarPerfilCT" />
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/ivFotoCTecnico"
-        android:layout_marginTop="40dp"
+        android:layout_below="@+id/tvNombre"
         android:background="@drawable/bg_activity"
         android:elevation="8dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="40dp">
 
-            <TextView
-                android:id="@+id/tvNombreCT"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:layout_marginRight="8dp"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="Nombre"
-                android:textSize="26sp"
-                app:layout_constraintEnd_toStartOf="@id/guideline"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tvApellidoCT"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="40dp"
-                android:fontFamily="@font/montserrat"
-                android:text="Apellido"
-                android:textSize="26sp"
-                app:layout_constraintStart_toEndOf="@id/guideline"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <View
-                android:id="@+id/separator"
+            <RelativeLayout
+                android:id="@+id/rl1"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="24dp"
-                android:background="@android:color/darker_gray"
-                app:layout_constraintTop_toBottomOf="@+id/tvNombreCT" />
-
-
-            <TextView
-                android:id="@+id/tvNacimiento"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginRight="8dp"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="Nacimiento:"
-                app:layout_constraintEnd_toStartOf="@id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/separator" />
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_activity_5"
+                android:padding="24dp">
 
-            <TextView
-                android:id="@+id/tvNacimientoCT"
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/ivCargo"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/clock" />
+
+                <TextView
+                    android:id="@+id/cargo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_toEndOf="@id/ivCargo"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Cargo:" />
+
+                <TextView
+                    android:id="@+id/tvCargo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/cargo"
+                    android:layout_marginStart="32dp"
+                    android:layout_toEndOf="@id/ivCargo"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Entrenador de porteros" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="24dp"
-                android:fontFamily="@font/montserrat"
-                android:text="Nacimiento:"
-                app:layout_constraintStart_toEndOf="@id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/separator" />
+                android:layout_below="@id/rl1"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_activity_5"
+                android:padding="24dp">
 
-            <TextView
-                android:id="@+id/tvPais"
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/ivEdad"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/clock" />
+
+                <TextView
+                    android:id="@+id/edad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_toEndOf="@id/ivEdad"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Edad:" />
+
+                <TextView
+                    android:id="@+id/tvEdadCT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/edad"
+                    android:layout_marginStart="32dp"
+                    android:layout_toEndOf="@id/ivEdad"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Edad del jugador" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl3"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="8dp"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="País nacimiento:"
-                app:layout_constraintEnd_toStartOf="@id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/tvNacimiento" />
+                android:layout_below="@id/rl2"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_activity_5"
+                android:padding="24dp">
 
-            <TextView
-                android:id="@+id/tvPaisJugadorCT"
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/icPais"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/clock" />
+
+                <TextView
+                    android:id="@+id/paisNacimiento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_toEndOf="@id/icPais"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="País de nacimiento:" />
+
+                <TextView
+                    android:id="@+id/tvPaisNacimiento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/paisNacimiento"
+                    android:layout_marginStart="32dp"
+                    android:layout_toEndOf="@id/icPais"
+                    android:fontFamily="@font/montserrat"
+                    android:text="España" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl4"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/montserrat"
-                android:text="Nacionalidad"
-                app:layout_constraintStart_toEndOf="@id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/tvNacimiento" />
+                android:layout_below="@id/rl3"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_activity_5"
+                android:padding="24dp">
 
-            <TextView
-                android:id="@+id/tvEdad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="8dp"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="Edad:"
-                app:layout_constraintEnd_toStartOf="@id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/tvPais" />
+                <ImageView
+                    android:id="@+id/ivFechaNacimiento"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/clock" />
 
-            <TextView
-                android:id="@+id/tvEdadCT"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/montserrat"
-                android:text="0"
-                app:layout_constraintStart_toEndOf="@id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/tvPais" />
+                <TextView
+                    android:id="@+id/nacimiento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_toEndOf="@id/ivFechaNacimiento"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Fecha de nacimiento:" />
 
-            <TextView
-                android:id="@+id/tvCargo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="8dp"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="Cargo:"
-                app:layout_constraintEnd_toStartOf="@id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/tvEdad" />
+                <TextView
+                    android:id="@+id/tvNacimientoCT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/nacimiento"
+                    android:layout_marginStart="32dp"
+                    android:layout_toEndOf="@id/ivFechaNacimiento"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Nacimiento" />
 
-            <TextView
-                android:id="@+id/tvCargoCT"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/montserrat"
-                android:text="Posición"
-                app:layout_constraintStart_toEndOf="@id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/tvEdad" />
+            </RelativeLayout>
 
+        </RelativeLayout>
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.5" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,9 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.dam.goality.AddCuerpoTecnico;
 import com.dam.goality.CuerpoTecnicoDetailActivity;
-import com.dam.goality.Detalle;
 import com.dam.goality.R;
 import com.dam.goality.adapter.CuerpoTecnicoAdapter;
 import com.dam.goality.model.CuerpoTecnico;
@@ -178,15 +175,7 @@ public class ListaCuerpoTecnicoStaff extends Fragment {
                         CuerpoTecnico cu = listaCT.get(i);
 
                         Intent intent = new Intent(getContext(), CuerpoTecnicoDetailActivity.class);
-
-                        intent.putExtra("STAFF", cu);
-
-                        intent.putExtra("APEL", cu.getApellidos());
-                        intent.putExtra("CARG", cu.getCargo());
-                        intent.putExtra("NACI", cu.getNacionalidad());
-                        intent.putExtra("URL", cu.getFotoPerfilUrl());
-                        intent.putExtra("NACIONALIDAD", cu.getNacionalidad());
-                        intent.putExtra("NOMBRE", cu.getNombre());
+                        intent.putExtra("CUERPO_TECNICO", cu);
                         startActivity(intent);
                     }
                 });
@@ -223,10 +212,10 @@ public class ListaCuerpoTecnicoStaff extends Fragment {
                     @Override
                     public void onClick(View v) {
                         int i = rvCuerpoTecnico.getChildAdapterPosition(v);
-                        CuerpoTecnico cuerpoTecnico = listaCT.get(i);
+                        CuerpoTecnico cu = listaCT.get(i);
 
-                        Intent intent = new Intent(getContext(), Detalle.class);
-                        intent.putExtra("CT", cuerpoTecnico);
+                        Intent intent = new Intent(getContext(), CuerpoTecnicoDetailActivity.class);
+                        intent.putExtra("CUERPO_TECNICO", cu);
                         startActivity(intent);
                     }
                 });
