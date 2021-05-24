@@ -61,7 +61,8 @@
                     android:id="@+id/ivPosicion"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/clock" />
+                    android:background="@drawable/posicion"
+                    android:backgroundTint="@color/background2"/>
 
                 <TextView
                     android:id="@+id/posicion"
@@ -97,7 +98,8 @@
                     android:id="@+id/ivDorsal"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/clock" />
+                    android:background="@drawable/dorsal"
+                    android:backgroundTint="@color/background2"/>
 
                 <TextView
                     android:id="@+id/tvPesoDorsalJugador"
@@ -124,7 +126,8 @@
                     android:id="@+id/icEdad"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/clock" />
+                    android:background="@drawable/edad"
+                    android:backgroundTint="@color/background2"/>
 
                 <TextView
                     android:id="@+id/edad"
@@ -160,7 +163,8 @@
                     android:id="@+id/ivEstatura"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/clock" />
+                    android:background="@drawable/peso"
+                    android:backgroundTint="@color/background2"/>
 
                 <TextView
                     android:id="@+id/estatura"

@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_activity_bottom"
     android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="24dp">
 
     <ImageView
         android:layout_width="56dp"
@@ -30,16 +31,17 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_hora_partido" />
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/add_jugador" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="24dp"
+            android:layout_gravity="center_vertical"
             android:textColor="@color/white"
             android:fontFamily="@font/montserrat_bold"
-
             android:text="Nuevo jugador" />
 
     </LinearLayout>
@@ -48,18 +50,20 @@
         android:id="@+id/addCuerpoTecnico"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_hora_partido" />
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/add_cuerpo_tecnico" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="24dp"
+            android:layout_gravity="center_vertical"
             android:textColor="@color/white"
             android:fontFamily="@font/montserrat_bold"
             android:text="Nuevo miembro del cuerpo técnico" />
@@ -70,18 +74,20 @@
         android:id="@+id/addPartido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_hora_partido" />
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/add_partido" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="24dp"
+            android:layout_gravity="center_vertical"
             android:textColor="@color/white"
             android:fontFamily="@font/montserrat_bold"
             android:text="Nuevo partido" />
@@ -92,22 +98,23 @@
         android:id="@+id/addEntrenamiento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_hora_partido" />
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/add_entrenamiento" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="24dp"
+            android:layout_gravity="center_vertical"
             android:fontFamily="@font/montserrat_bold"
             android:textColor="@color/white"
-            android:text="Nuevo entrenamiento"
-            android:layout_marginBottom="24dp"/>
+            android:text="Nuevo entrenamiento"/>
 
     </LinearLayout>
 
