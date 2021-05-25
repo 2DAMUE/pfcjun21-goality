@@ -11,9 +11,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import com.dam.goality.fragments.AddFragment;
@@ -27,6 +30,7 @@ import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivityStaff extends AppCompatActivity {
@@ -40,6 +44,9 @@ public class MainActivityStaff extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     BottomSheetDialog bottomSheetDialog;
 
+    // navigationDrawer
+    private DrawerLayout drawer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +55,19 @@ public class MainActivityStaff extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         selectedFragment = new PartidoFragment();
         titleToolbar = findViewById(R.id.titleToolbar);
+
+        // Navigation Drawr
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        drawer = findViewById(R.id.drawerLayout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
 
         toolbar = findViewById(R.id.toolbar);
         toolbar.setOnMenuItemClickListener(listener);
@@ -104,6 +124,46 @@ public class MainActivityStaff extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, selectedFragment).commit();
 
     }
+
+    // Abre activities tras pulsar en elementos del NavigationDrawer
+    // 25/05/2021 13:36 -> Falta añadir funcionalidad a esto
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_aboutus:
+                Intent i3 = new Intent(this, MiPerfilActivity.class);
+                startActivity(i3);
+                break;
+            case R.id.nav_tutorial:
+                Intent i4 = new Intent(this, MiPerfilActivity.class);
+                startActivity(i4);
+                break;
+            case R.id.nav_miperfil:
+                Intent i5 = new Intent(this, MiPerfilActivity.class);
+                startActivity(i5);
+                break;
+            case R.id.nav_logout:
+                MaterialAlertDialogBuilder alertDialog = new MaterialAlertDialogBuilder(this);
+                alertDialog.setMessage("¿Estás seguro que deseas salir?");
+                alertDialog.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        firebaseAuth.signOut();
+                        finish();
+                    }
+                });
+                alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                alertDialog.create().show();
+                break;
+        }
+
+        return true;
+    }
+
 
     private androidx.appcompat.widget.Toolbar.OnMenuItemClickListener listener = new Toolbar.OnMenuItemClickListener() {
         @Override
