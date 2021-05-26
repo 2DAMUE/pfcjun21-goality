@@ -61,7 +61,8 @@
                     android:id="@+id/ivCargo"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/clock" />
+                    android:background="@drawable/add_puesto"
+                    android:backgroundTint="@color/background2"/>
 
                 <TextView
                     android:id="@+id/cargo"
@@ -97,7 +98,8 @@
                     android:id="@+id/ivEdad"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/clock" />
+                    android:background="@drawable/edad"
+                    android:backgroundTint="@color/background2"/>
 
                 <TextView
                     android:id="@+id/edad"
@@ -133,7 +135,8 @@
                     android:id="@+id/icPais"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/clock" />
+                    android:background="@drawable/add_pais"
+                    android:backgroundTint="@color/background2"/>
 
                 <TextView
                     android:id="@+id/paisNacimiento"
@@ -169,7 +172,8 @@
                     android:id="@+id/ivFechaNacimiento"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/clock" />
+                    android:background="@drawable/add_fecha"
+                    android:backgroundTint="@color/background2"/>
 
                 <TextView
                     android:id="@+id/nacimiento"

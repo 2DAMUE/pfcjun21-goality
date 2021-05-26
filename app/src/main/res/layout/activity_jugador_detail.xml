@@ -200,7 +200,8 @@
                     android:id="@+id/ivPeso"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/clock" />
+                    android:background="@drawable/add_peso"
+                    android:backgroundTint="@color/background2"/>
 
                 <TextView
                     android:id="@+id/peso"
@@ -236,7 +237,8 @@
                     android:id="@+id/icHora"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/clock" />
+                    android:background="@drawable/add_pais"
+                    android:backgroundTint="@color/background2"/>
 
                 <TextView
                     android:id="@+id/pais"
@@ -272,7 +274,8 @@
                     android:id="@+id/ic2"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/clock" />
+                    android:background="@drawable/add_fecha"
+                    android:backgroundTint="@color/background2"/>
 
                 <TextView
                     android:id="@+id/nacimiento"
