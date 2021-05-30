@@ -33,12 +33,12 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivityStaff extends AppCompatActivity {
+public class MainActivityStaff extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     //    BottomNavigationView bottomNavigation;
     Fragment selectedFragment = null;
     BottomAppBar bottom_app_bar;
-    MaterialToolbar toolbar;
+    // MaterialToolbar toolbar;
     FloatingActionButton fab;
     TextView titleToolbar;
     FirebaseAuth firebaseAuth;
@@ -63,16 +63,16 @@ public class MainActivityStaff extends AppCompatActivity {
 
         drawer = findViewById(R.id.drawerLayout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
+        navigationView.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        toolbar = findViewById(R.id.toolbar);
-        toolbar.setOnMenuItemClickListener(listener);
+
         bottom_app_bar = findViewById(R.id.bottom_app_bar);
         bottom_app_bar.setOnMenuItemClickListener(listener2);
+
         fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,21 +125,25 @@ public class MainActivityStaff extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     // Abre activities tras pulsar en elementos del NavigationDrawer
-    // 25/05/2021 13:36 -> Falta añadir funcionalidad a esto
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_aboutus:
-                Intent i3 = new Intent(this, MiPerfilActivity.class);
-                startActivity(i3);
-                break;
-            case R.id.nav_tutorial:
-                Intent i4 = new Intent(this, MiPerfilActivity.class);
-                startActivity(i4);
+                Intent i = new Intent(this, MiPerfilActivity.class);
+                startActivity(i);
                 break;
             case R.id.nav_miperfil:
-                Intent i5 = new Intent(this, MiPerfilActivity.class);
-                startActivity(i5);
+                Intent i2 = new Intent(this, MiPerfilActivity.class);
+                startActivity(i2);
                 break;
             case R.id.nav_logout:
                 MaterialAlertDialogBuilder alertDialog = new MaterialAlertDialogBuilder(this);
@@ -164,35 +168,7 @@ public class MainActivityStaff extends AppCompatActivity {
         return true;
     }
 
-
-    private androidx.appcompat.widget.Toolbar.OnMenuItemClickListener listener = new Toolbar.OnMenuItemClickListener() {
-        @Override
-        public boolean onMenuItemClick(MenuItem item) {
-            if (item.getItemId() == R.id.miPerfil) {
-                MaterialAlertDialogBuilder alertDialog = new MaterialAlertDialogBuilder(MainActivityStaff.this);
-                alertDialog.setMessage("¿Estás seguro que deseas salir?");
-                alertDialog.setPositiveButton("Si", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        firebaseAuth.signOut();
-                        finish();
-                    }
-                });
-                alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-                alertDialog.create().show();
-            } else if (item.getItemId() == R.id.editarPerfil) {
-                Intent i = new Intent(MainActivityStaff.this, MiPerfilActivity.class);
-                startActivity(i);
-            }
-            return true;
-        }
-    };
-
+    // Bottom nav actions
     private androidx.appcompat.widget.Toolbar.OnMenuItemClickListener listener2 = new androidx.appcompat.widget.Toolbar.OnMenuItemClickListener() {
         @Override
         public boolean onMenuItemClick(MenuItem item) {
