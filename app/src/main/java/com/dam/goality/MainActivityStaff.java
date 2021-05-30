@@ -69,7 +69,6 @@ public class MainActivityStaff extends AppCompatActivity implements NavigationVi
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-
         bottom_app_bar = findViewById(R.id.bottom_app_bar);
         bottom_app_bar.setOnMenuItemClickListener(listener2);
 
@@ -187,10 +186,8 @@ public class MainActivityStaff extends AppCompatActivity implements NavigationVi
                 titleToolbar.setText("Mi Equipos");
                 selectedFragment = new ListaFragment();
 
-            } else if (item.getItemId() == R.id.estadisticas) {
-                titleToolbar.setText("Estadísticas");
-                selectedFragment = new AdministracionFragment();
             } else if (item.getItemId() == R.id.est) {
+                titleToolbar.setText("Estadísticas");
                 selectedFragment = new EstadisticasFragment();
             }
 

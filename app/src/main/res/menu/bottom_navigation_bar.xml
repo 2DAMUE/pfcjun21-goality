@@ -20,12 +20,6 @@
         app:showAsAction="always"/>
 
     <item
-        android:id="@+id/estadisticas"
-        android:icon="@drawable/ic_estadisticas"
-        android:title="Estadísticas"
-        app:showAsAction="always"/>
-
-    <item
         android:id="@+id/est"
         android:icon="@drawable/ic_estadisticas"
         android:title="Estadísticas"
