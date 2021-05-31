@@ -55,14 +55,6 @@ public class EntrenamientoFragment extends Fragment {
 
         cargarEntrenamentos();
 
-//        btnAddEquipo.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(getActivity(), AddEntrenamiento.class);
-//                startActivityForResult(i, 1);
-//            }
-//        });
-
         return view;
     }
 
@@ -83,8 +75,6 @@ public class EntrenamientoFragment extends Fragment {
                     public void onClick(View v) {
                         int i = rvEntrenamientos.getChildAdapterPosition(v);
                         Entrenamiento entrenamiento = listaEntrenamientos.get(i);
-
-//                        Toast.makeText(getContext(), entrenamiento.toString(), Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent(getContext(), EntrenamientoDetailActivity.class);
                         intent.putExtra("ENTRENAMIENTO", entrenamiento);

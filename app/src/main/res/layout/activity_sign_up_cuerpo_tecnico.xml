@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:id="@+id/cl"
     tools:context=".SignUpCuerpoTecnico">
 
     <ScrollView
@@ -78,6 +77,7 @@
                     android:layout_marginTop="8dp"
                     android:drawableLeft="@drawable/ic_fecha"
                     android:fontFamily="@font/montserrat"
+                    android:onClick="seleccionarFechaNac"
                     android:text="Seleccionar fecha de nacimiento" />
 
                 <TextView
@@ -130,30 +130,11 @@
                         android:text="Selecciona el cargo" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    android:id="@+id/tvEdad"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tilCargo"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="24dp"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:text="Edad" />
-
-                <NumberPicker
-                    android:id="@+id/npEdadStaff"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_below="@+id/tvEdad"
-                    android:fontFamily="@font/montserrat"
-                    app:layout_constraintEnd_toEndOf="parent" />
-
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnRegistrar"
                     android:layout_width="325dp"
                     android:layout_height="64dp"
-                    android:layout_below="@id/npEdadStaff"
+                    android:layout_below="@id/tilCargo"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/montserrat_bold"
                     android:onClick="registrar"

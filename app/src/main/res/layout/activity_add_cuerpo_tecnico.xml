@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
@@ -42,29 +43,44 @@
                 android:background="@drawable/bg_activity"
                 android:padding="40dp">
 
-                <EditText
-                    android:id="@+id/etNombre"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilNombre"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
-                    android:hint="Nombre" />
+                    android:layout_marginBottom="16dp"
+                    android:hint="Nombre"
+                    app:endIconMode="clear_text">
 
-                <EditText
-                    android:id="@+id/etApellidos"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etNombre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilApellidos"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/etNombre"
-                    android:layout_marginTop="24dp"
-                    android:fontFamily="@font/montserrat"
-                    android:hint="Apellidos" />
+                    android:layout_below="@+id/tilNombre"
+                    android:layout_marginBottom="16dp"
+                    android:hint="Apellidos"
+                    app:endIconMode="clear_text">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etApellidos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
                     android:id="@+id/llFechaNac"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/etApellidos"
-                    android:layout_marginTop="24dp"
+                    android:layout_below="@id/tilApellidos"
                     android:orientation="horizontal">
 
                     <TextView
@@ -91,7 +107,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="72dp"
                     android:layout_below="@id/llFechaNac"
-                    android:layout_marginTop="8dp"
+                    android:onClick="seleccionarFechaNac"
+                    android:layout_marginBottom="16dp"
                     android:drawableLeft="@drawable/ic_fecha"
                     android:fontFamily="@font/montserrat"
                     android:text="Seleccionar fecha de nacimiento" />
@@ -101,7 +118,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/btnDateCT"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="8dp"
                     android:fontFamily="@font/montserrat_bold"
                     android:text="País de nacimiento:" />
 
@@ -111,7 +128,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvPaisNac"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginBottom="16dp">
 
                     <AutoCompleteTextView
                         android:id="@+id/atvNacimiento"
@@ -126,7 +143,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tilNacimiento"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="8dp"
                     android:fontFamily="@font/montserrat_bold"
                     android:text="Cargo:" />
 
@@ -136,7 +153,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvCargo"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginBottom="16dp">
 
                     <AutoCompleteTextView
                         android:id="@+id/atvCargo"
@@ -146,30 +163,11 @@
                         android:text="Selecciona el cargo" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    android:id="@+id/tvEdad"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tilCargo"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="24dp"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:text="Edad" />
-
-                <NumberPicker
-                    android:id="@+id/npEdadStaff"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_below="@+id/tvEdad"
-                    android:fontFamily="@font/montserrat"
-                    app:layout_constraintEnd_toEndOf="parent" />
-
                 <LinearLayout
                     android:id="@+id/llBotones"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/npEdadStaff"
+                    android:layout_below="@+id/tilCargo"
                     android:layout_marginTop="24dp">
 
                     <Button

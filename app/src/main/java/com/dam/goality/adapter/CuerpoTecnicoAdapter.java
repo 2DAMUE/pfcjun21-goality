@@ -81,6 +81,7 @@ public class CuerpoTecnicoAdapter
 
         public void bindItem(CuerpoTecnico ct) {
             Glide.with(ivFotoCT).load(ct.getFotoPerfilUrl())
+                    .centerCrop()
                     .into(ivFotoCT);
             tvNombreCT.setText(ct.getNombre() + " " + ct.getApellidos());
             tvPosicionCT.setText(ct.getCargo());

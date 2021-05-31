@@ -9,14 +9,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
-import com.dam.goality.fragments.AddFragment;
 import com.dam.goality.fragments.AdministracionFragment;
 import com.dam.goality.fragments.EntrenamientoFragment;
 import com.dam.goality.fragments.EstadisticasFragment;
@@ -27,11 +26,13 @@ import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivityStaff extends AppCompatActivity {
 
     //    BottomNavigationView bottomNavigation;
+    ConstraintLayout cl;
     Fragment selectedFragment = null;
     BottomAppBar bottom_app_bar;
     MaterialToolbar toolbar;
@@ -49,6 +50,7 @@ public class MainActivityStaff extends AppCompatActivity {
         selectedFragment = new PartidoFragment();
         titleToolbar = findViewById(R.id.titleToolbar);
 
+        cl = findViewById(R.id.cl);
         toolbar = findViewById(R.id.toolbar);
         toolbar.setOnMenuItemClickListener(listener);
         bottom_app_bar = findViewById(R.id.bottom_app_bar);
@@ -127,7 +129,7 @@ public class MainActivityStaff extends AppCompatActivity {
                 alertDialog.create().show();
             } else if (item.getItemId() == R.id.editarPerfil) {
                 Intent i = new Intent(MainActivityStaff.this, MiPerfilActivity.class);
-                startActivity(i);
+                startActivityForResult(i, 5);
             }
             return true;
         }
@@ -143,9 +145,6 @@ public class MainActivityStaff extends AppCompatActivity {
             } else if (item.getItemId() == R.id.calendario) {
                 titleToolbar.setText("Mis Entrenamientos");
                 selectedFragment = new EntrenamientoFragment();
-
-            } else if (item.getItemId() == R.id.add) {
-                selectedFragment = new AddFragment();
 
             } else if (item.getItemId() == R.id.personas) {
                 titleToolbar.setText("Mi Equipos");
@@ -170,19 +169,63 @@ public class MainActivityStaff extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
-            Toast.makeText(MainActivityStaff.this, "OK", Toast.LENGTH_SHORT).show();
+            Snackbar.make(cl, "Jugador añadido exitosamente", Snackbar.LENGTH_LONG)
+                    .setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    })
+                    .setActionTextColor(getResources().getColor(R.color.primary))
+                    .show();
         }
 
         if (requestCode == 2 && resultCode == Activity.RESULT_OK) {
-            Toast.makeText(MainActivityStaff.this, "OK", Toast.LENGTH_SHORT).show();
+            Snackbar.make(cl, "Miembro del cuerpo técnico añadido exitosamente", Snackbar.LENGTH_LONG)
+                    .setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    })
+                    .setActionTextColor(getResources().getColor(R.color.primary))
+                    .show();
         }
 
         if (requestCode == 3 && resultCode == Activity.RESULT_OK) {
-            Toast.makeText(MainActivityStaff.this, "OK", Toast.LENGTH_SHORT).show();
+            Snackbar.make(cl, "Partido añadido exitosamente", Snackbar.LENGTH_LONG)
+                    .setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    })
+                    .setActionTextColor(getResources().getColor(R.color.primary))
+                    .show();
         }
 
         if (requestCode == 4 && resultCode == Activity.RESULT_OK) {
-            Toast.makeText(MainActivityStaff.this, "OK", Toast.LENGTH_SHORT).show();
+            Snackbar.make(cl, "Entrenamiento añadido exitosamente", Snackbar.LENGTH_LONG)
+                    .setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    })
+                    .setActionTextColor(getResources().getColor(R.color.primary))
+                    .show();
+        }
+
+        if (requestCode == 5 && resultCode == Activity.RESULT_OK) {
+            Snackbar.make(cl, "Perfil editado exitosamente", Snackbar.LENGTH_LONG)
+                    .setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    })
+                    .setActionTextColor(getResources().getColor(R.color.primary))
+                    .show();
         }
 
     }

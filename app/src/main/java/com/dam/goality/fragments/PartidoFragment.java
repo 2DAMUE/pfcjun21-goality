@@ -1,12 +1,10 @@
 package com.dam.goality.fragments;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -43,7 +41,7 @@ public class PartidoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_partido, container, false);
 
 //        btnAddEquipo = view.findViewById(R.id.btnAddEquipo);
 
@@ -190,9 +188,9 @@ public class PartidoFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 3 && resultCode == Activity.RESULT_OK) {
-            Toast.makeText(getActivity(), "OK", Toast.LENGTH_SHORT).show();
-        }
+//        if (requestCode == 3 && resultCode == Activity.RESULT_OK) {
+//            Toast.makeText(getActivity(), "OK", Toast.LENGTH_SHORT).show();
+//        }
 
     }
 

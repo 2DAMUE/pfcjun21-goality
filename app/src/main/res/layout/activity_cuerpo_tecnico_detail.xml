@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/rl"
     android:layout_height="match_parent"
     android:background="@color/background"
     tools:context=".CuerpoTecnicoDetailActivity">
@@ -19,14 +20,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ivFotoCTecnico"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="24dp"
         android:fontFamily="@font/montserrat_bold"
         android:gravity="center"
         android:text="Nombre Apellido"
         android:textColor="@color/white"
-        android:textSize="22sp" />
+        android:textSize="20sp" />
 
     <ImageView
         android:id="@+id/editProfile"
@@ -34,7 +37,7 @@
         android:layout_height="40dp"
         android:layout_alignParentEnd="true"
         android:layout_margin="40dp"
-        android:background="@drawable/editprofile"
+        android:background="@drawable/edit"
         android:onClick="editarPerfilCT" />
 
     <ScrollView
@@ -62,7 +65,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/add_puesto"
-                    android:backgroundTint="@color/background2"/>
+                    android:backgroundTint="@color/background2" />
 
                 <TextView
                     android:id="@+id/cargo"
@@ -99,7 +102,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/edad"
-                    android:backgroundTint="@color/background2"/>
+                    android:backgroundTint="@color/background2" />
 
                 <TextView
                     android:id="@+id/edad"
@@ -136,7 +139,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/add_pais"
-                    android:backgroundTint="@color/background2"/>
+                    android:backgroundTint="@color/background2" />
 
                 <TextView
                     android:id="@+id/paisNacimiento"
@@ -173,7 +176,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/add_fecha"
-                    android:backgroundTint="@color/background2"/>
+                    android:backgroundTint="@color/background2" />
 
                 <TextView
                     android:id="@+id/nacimiento"

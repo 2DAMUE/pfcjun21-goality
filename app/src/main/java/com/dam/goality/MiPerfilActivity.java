@@ -1,11 +1,8 @@
 package com.dam.goality;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -14,13 +11,13 @@ import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.bumptech.glide.Glide;
 import com.dam.goality.model.CuerpoTecnico;
@@ -29,6 +26,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -40,16 +38,24 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.List;
 
-public class MiPerfilActivity extends AppCompatActivity {
+public class MiPerfilActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
+    ConstraintLayout cl;
     TextInputLayout tilNacimiento;
     AutoCompleteTextView atvNacimientoCT;
-    ArrayList<String> listaPaises;
+    List<String> listaPaises;
     ArrayAdapter<String> adapter;
 
     TextInputLayout tilCargo;
@@ -63,7 +69,6 @@ public class MiPerfilActivity extends AppCompatActivity {
     TextView tvDateStaff;
     EditText etNombre;
     EditText etApellidos;
-    NumberPicker npEdadStaff;
     String fecha = "";
     MaterialButton btnDateCT;
     DatePickerDialog.OnDateSetListener setListener;
@@ -74,6 +79,7 @@ public class MiPerfilActivity extends AppCompatActivity {
     String myUrl = "";
 
     CuerpoTecnico cuerpoTecnico;
+    int edad;
 
 
     @Override
@@ -81,11 +87,9 @@ public class MiPerfilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mi_perfil);
 
+        cl = findViewById(R.id.cl);
         ivPerfilCT = findViewById(R.id.ivPerfilCT);
         tvCambiarFoto = findViewById(R.id.tvCambiarFoto);
-        npEdadStaff = findViewById(R.id.npEdadStaff);
-        npEdadStaff.setMaxValue(1);
-        npEdadStaff.setMaxValue(99);
         btnDateCT = findViewById(R.id.btnDateCT);
         tvDateStaff = findViewById(R.id.tvDateStaff);
         etNombre = findViewById(R.id.etNombre);
@@ -95,66 +99,13 @@ public class MiPerfilActivity extends AppCompatActivity {
         tilCargo = findViewById(R.id.tilCargo);
         atvCargo = findViewById(R.id.atvCargo);
 
-        // Calendario
-        Calendar calendar = Calendar.getInstance();
-        final int year = calendar.get(Calendar.YEAR);
-        final int month = calendar.get(Calendar.MONTH);
-        final int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-        // Seleccionar fecha de nacimiento
-        btnDateCT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(MiPerfilActivity.this,
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth, setListener, year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                datePickerDialog.show();
-            }
-        });
-        setListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                month = month + 1;
-                String date = day + "/" + month + "/" + year;
-                tvDateStaff.setText(date);
-                fecha = date;
-            }
-        };
-
-        // Number picker edad
-        npEdadStaff.setMaxValue(4);
-        npEdadStaff.setMaxValue(99);
-
-        // Drop down menu país nacimiento
-        listaPaises = new ArrayList<>();
-        listaPaises.add("España");
-        listaPaises.add("Alemania");
-        listaPaises.add("Italia");
-        adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, listaPaises);
-        atvNacimientoCT.setAdapter(adapter);
-        atvNacimientoCT.setThreshold(1);
-
-        // Drop down menu cargo
-        listaCargos = new ArrayList<>();
-        listaCargos.add("Entrenador");
-        listaCargos.add("Segundo entrenador");
-        listaCargos.add("Entrenador de porteros");
-        listaCargos.add("Preparador físico");
-        listaCargos.add("Nutricionista");
-        listaCargos.add("Fisioterapeuta");
-        listaCargos.add("Psicólogo");
-        adapterCargo = new ArrayAdapter<>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, listaCargos);
-        atvCargo.setAdapter(adapterCargo);
-        atvCargo.setThreshold(1);
-
         // Cambiar imagen de perfil
         tvCambiarFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("image/jpeg");
-                intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
-                startActivityForResult(Intent.createChooser(intent, "Complete la acción usando"), 1);
+                CropImage.activity()
+                        .setGuidelines(CropImageView.Guidelines.ON)
+                        .start(MiPerfilActivity.this);
             }
         });
 
@@ -176,7 +127,6 @@ public class MiPerfilActivity extends AppCompatActivity {
                 tvDateStaff.setText(ct.getFechaNacimiento());
                 atvNacimientoCT.setText(ct.getNacionalidad());
                 atvCargo.setText(ct.getCargo());
-                npEdadStaff.setValue(ct.getEdad());
             }
 
             @Override
@@ -185,33 +135,128 @@ public class MiPerfilActivity extends AppCompatActivity {
             }
         });
 
+        // Drop down menu país nacimiento
+        Datos datos = new Datos();
+        listaPaises = datos.listaPaises;
+        adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, listaPaises);
+        atvNacimientoCT.setAdapter(adapter);
+        atvNacimientoCT.setThreshold(1);
+
+        // Drop down menu cargo
+        listaCargos = new ArrayList<>();
+        listaCargos.add("Entrenador");
+        listaCargos.add("Segundo entrenador");
+        listaCargos.add("Entrenador de porteros");
+        listaCargos.add("Preparador físico");
+        listaCargos.add("Nutricionista");
+        listaCargos.add("Fisioterapeuta");
+        listaCargos.add("Psicólogo");
+        adapterCargo = new ArrayAdapter<>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, listaCargos);
+        atvCargo.setAdapter(adapterCargo);
+        atvCargo.setThreshold(1);
+
+    }
+
+    // Seleccionar fecha de nacimiento
+    public void seleccionarFechaNac(View view) {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                this,
+                R.style.AppTheme_DatePickerDialog,
+                this,
+                Calendar.getInstance().get(Calendar.YEAR),
+                Calendar.getInstance().get(Calendar.MONTH),
+                Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+        );
+        datePickerDialog.show();
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar c = Calendar.getInstance();
+        c.add(Calendar.DATE, -1);
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        fecha = sdf.format(c.getTime());
+        tvDateStaff.setText(fecha);
+
+        Calendar c3 = Calendar.getInstance();
+        String fechaActual = sdf.format(c3.getTime());
+
+        try {
+            Date d1 = sdf.parse(fecha);
+            Date d2 = sdf.parse(fechaActual);
+            Calendar c1 = new GregorianCalendar();
+            Calendar c2 = new GregorianCalendar();
+            c1.setTime(d1);
+            c2.setTime(d2);
+
+            edad = c2.get(Calendar.YEAR) - c1.get(Calendar.YEAR);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     // Cambiar foto de perfil
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
-            // Cargamos la imagen seleccionada en el ImageView
-            imageUri = data.getData();
-            Glide.with(ivPerfilCT.getContext()).load(imageUri)
-                    .into(ivPerfilCT);
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                imageUri = result.getUri();
+                Glide.with(ivPerfilCT.getContext()).load(imageUri)
+                        .into(ivPerfilCT);
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+            }
         }
     }
 
 
     public void cancelar(View view) {
+        setResult(RESULT_CANCELED);
+        finish();
     }
 
     public void aceptar(View view) {
+        if (etNombre.getText().toString().isEmpty() || etApellidos.getText().toString().isEmpty()) {
+            Snackbar.make(cl, "Debe agregar todos los campos", Snackbar.LENGTH_LONG)
+                    .setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
 
-        if (etNombre.getText().toString().isEmpty() || etApellidos.getText().toString().isEmpty() || npEdadStaff.getValue() == 0) {
-            Toast.makeText(this, "Debe agregar todos los campos", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .setActionTextColor(getResources().getColor(R.color.primary))
+                    .show();
         } else {
+            fecha = tvDateStaff.getText().toString();
+            calcularEdad();
             upload();
         }
+    }
 
+    private void calcularEdad() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar c3 = Calendar.getInstance();
+        String fechaActual = sdf.format(c3.getTime());
 
+        try {
+            Date d1 = sdf.parse(fecha);
+            Date d2 = sdf.parse(fechaActual);
+            Calendar c1 = new GregorianCalendar();
+            Calendar c2 = new GregorianCalendar();
+            c1.setTime(d1);
+            c2.setTime(d2);
+
+            edad = c2.get(Calendar.YEAR) - c1.get(Calendar.YEAR) - 1;
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     private void upload() {
@@ -244,16 +289,16 @@ public class MiPerfilActivity extends AppCompatActivity {
                         hashMap.put("apellidos", etApellidos.getText().toString());
                         hashMap.put("fechaNacimiento", fecha);
                         hashMap.put("fotoPerfilUrl", myUrl);
-                        hashMap.put("edad", npEdadStaff.getValue());
+                        hashMap.put("edad", edad);
                         hashMap.put("nacionalidad", atvNacimientoCT.getText().toString());
                         hashMap.put("cargo", atvCargo.getText().toString());
 
                         reference.updateChildren(hashMap);
                         progressDialog.dismiss();
 
-//                        Intent i = new Intent();
-//                        setResult(RESULT_OK, i);
-//                        finish();
+                        Intent i = new Intent();
+                        setResult(RESULT_OK, i);
+                        finish();
 
                     } else {
                         Toast.makeText(MiPerfilActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
@@ -273,15 +318,15 @@ public class MiPerfilActivity extends AppCompatActivity {
             hashMap.put("nombre", etNombre.getText().toString().trim());
             hashMap.put("apellidos", etApellidos.getText().toString().trim());
             hashMap.put("fechaNacimiento", fecha);
-            hashMap.put("edad", npEdadStaff.getValue());
+            hashMap.put("edad", edad);
             hashMap.put("nacionalidad", atvNacimientoCT.getText().toString());
             hashMap.put("cargo", atvCargo.getText().toString());
             reference.updateChildren(hashMap);
             progressDialog.dismiss();
 
-//            Intent i = new Intent();
-//            setResult(RESULT_OK, i);
-//            finish();
+            Intent i = new Intent();
+            setResult(RESULT_OK, i);
+            finish();
         }
     }
 }

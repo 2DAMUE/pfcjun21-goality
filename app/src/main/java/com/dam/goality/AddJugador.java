@@ -1,11 +1,8 @@
 package com.dam.goality;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -32,18 +29,25 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class AddJugador extends AppCompatActivity {
+public class AddJugador extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     TextInputLayout tilNacimiento;
     AutoCompleteTextView atvNacimiento;
-    ArrayList<String> listaPaises;
+    List<String> listaPaises;
     ArrayAdapter<String> adapter;
 
     TextInputLayout tilCargo;
@@ -60,7 +64,6 @@ public class AddJugador extends AppCompatActivity {
     TextView etPeso;
     TextView etEstatura;
     NumberPicker npDorsal;
-    NumberPicker npEdad;
     MaterialButton btnDate;
     String fecha = "";
 
@@ -69,6 +72,8 @@ public class AddJugador extends AppCompatActivity {
     String myUrl = "";
 
     DatePickerDialog.OnDateSetListener setListener;
+
+    int edad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,11 +91,6 @@ public class AddJugador extends AppCompatActivity {
         etApellidos = findViewById(R.id.etApellidos);
         etPeso = findViewById(R.id.etPeso);
         etEstatura = findViewById(R.id.etEstatura);
-        npEdad = findViewById(R.id.npEdad);
-
-        // Number picker edad
-        npEdad.setMaxValue(4);
-        npEdad.setMaxValue(99);
 
         // Number picker dorsal
         npDorsal = findViewById(R.id.npDorsal);
@@ -106,33 +106,11 @@ public class AddJugador extends AppCompatActivity {
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        // Seleccionar fecha de nacimiento
-        btnDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(AddJugador.this,
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth, setListener, year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                datePickerDialog.show();
-            }
-        });
-        setListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                month = month + 1;
-                String date = day + "/" + month + "/" + year;
-                tvFecha.setText(date);
-                fecha = date;
-            }
-        };
-
         // Drop down menu país nacimiento
         tilNacimiento = findViewById(R.id.tilNacimiento);
         atvNacimiento = findViewById(R.id.atvNacimiento);
-        listaPaises = new ArrayList<>();
-        listaPaises.add("España");
-        listaPaises.add("Alemania");
-        listaPaises.add("Italia");
+        Datos datos = new Datos();
+        listaPaises = datos.listaPaises;
         adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, listaPaises);
         atvNacimiento.setAdapter(adapter);
         atvNacimiento.setThreshold(1);
@@ -153,24 +131,73 @@ public class AddJugador extends AppCompatActivity {
         tvCambiarFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("image/jpeg");
-                intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
-                startActivityForResult(Intent.createChooser(intent, "Complete la acción usando"), 1);
+//                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+//                intent.setType("image/jpeg");
+//                intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
+//                startActivityForResult(Intent.createChooser(intent, "Complete la acción usando"), 1);
+                CropImage.activity()
+                        .setGuidelines(CropImageView.Guidelines.ON)
+                        .start(AddJugador.this);
             }
         });
 
+    }
+
+    // Seleccionar fecha de nacimiento
+    public void seleccionarFechaNacJ(View view) {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                this,
+                R.style.AppTheme_DatePickerDialog,
+                this,
+                Calendar.getInstance().get(Calendar.YEAR),
+                Calendar.getInstance().get(Calendar.MONTH),
+                Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+        );
+        datePickerDialog.show();
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar c = Calendar.getInstance();
+        c.add(Calendar.DATE, -1);
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        fecha = sdf.format(c.getTime());
+        tvFecha.setText(fecha);
+
+        Calendar c3 = Calendar.getInstance();
+        String fechaActual = sdf.format(c3.getTime());
+
+        try {
+            Date d1 = sdf.parse(fecha);
+            Date d2 = sdf.parse(fechaActual);
+            Calendar c1 = new GregorianCalendar();
+            Calendar c2 = new GregorianCalendar();
+            c1.setTime(d1);
+            c2.setTime(d2);
+
+            edad = c2.get(Calendar.YEAR) - c1.get(Calendar.YEAR) -1;
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     // Cambiar foto de perfil
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
-            // Cargamos la imagen seleccionada en el ImageView
-            imageUri = data.getData();
-            Glide.with(ivFotoJugador.getContext()).load(imageUri)
-                    .into(ivFotoJugador);
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                imageUri = result.getUri();
+                Glide.with(ivFotoJugador.getContext()).load(imageUri)
+                        .into(ivFotoJugador);
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+            }
         }
     }
 
@@ -183,7 +210,7 @@ public class AddJugador extends AppCompatActivity {
         String peso = etPeso.getText().toString().trim();
         String estatura = etEstatura.getText().toString().trim();
 
-        if (nombre.isEmpty() || apellidos.isEmpty() || fecha.isEmpty() || npEdad.getValue() == 0 || npDorsal.getValue() == 0
+        if (nombre.isEmpty() || apellidos.isEmpty() || fecha.isEmpty() || npDorsal.getValue() == 0
                 || nacionalidad.equalsIgnoreCase("Selecciona el país")
                 || posicion.equalsIgnoreCase("Selecciona la posición")
                 || peso.isEmpty() || estatura.isEmpty()) {
@@ -226,7 +253,7 @@ public class AddJugador extends AppCompatActivity {
                         hashMap.put("apellidos", etApellidos.getText().toString());
                         hashMap.put("fechaNacimiento", fecha);
                         hashMap.put("fotoPerfilUrl", myUrl);
-                        hashMap.put("edad", npEdad.getValue());
+                        hashMap.put("edad", edad);
                         hashMap.put("nacionalidad", atvNacimiento.getText().toString());
                         hashMap.put("posicion", atvCargo.getText().toString());
                         hashMap.put("peso", Double.parseDouble(peso));
@@ -263,7 +290,7 @@ public class AddJugador extends AppCompatActivity {
             hashMap.put("apellidos", etApellidos.getText().toString());
             hashMap.put("fechaNacimiento", fecha);
             hashMap.put("fotoPerfilUrl", "https://firebasestorage.googleapis.com/v0/b/goality-753fc.appspot.com/o/Uploads%2Fpp.png?alt=media&token=bae95164-da0f-4a38-a6c3-91b19559fc12");
-            hashMap.put("edad", npEdad.getValue());
+            hashMap.put("edad", edad);
             hashMap.put("nacionalidad", atvNacimiento.getText().toString());
             hashMap.put("posicion", atvCargo.getText().toString());
             hashMap.put("peso", Double.parseDouble(peso));

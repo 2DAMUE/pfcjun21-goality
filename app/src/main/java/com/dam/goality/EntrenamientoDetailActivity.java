@@ -1,7 +1,9 @@
 package com.dam.goality;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +18,7 @@ public class EntrenamientoDetailActivity extends AppCompatActivity {
     TextView tvHoraEntrenamietoD;
     TextView tvDuracionEstimada;
     TextView tvHoraDescripcion;
+    RelativeLayout rl4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +31,8 @@ public class EntrenamientoDetailActivity extends AppCompatActivity {
         tvFechaEntrenamietoD = findViewById(R.id.tvFechaEntrenamietoD);
         tvHoraEntrenamietoD = findViewById(R.id.tvHoraEntrenamietoD);
         tvDuracionEstimada = findViewById(R.id.tvDuracionEstimada);
-        tvHoraDescripcion = findViewById(R.id.tvHoraDescripcion);
+        tvHoraDescripcion = findViewById(R.id.tvDescripcion);
+        rl4 = findViewById(R.id.rl4);
 
         // cargar los datos del entrenamiento
 
@@ -40,5 +44,10 @@ public class EntrenamientoDetailActivity extends AppCompatActivity {
         tvHoraEntrenamietoD.setText(entrenamiento.getHoraEntrenamiento());
         tvDuracionEstimada.setText(String.valueOf(entrenamiento.getDuracion()) + " minutos");
         tvHoraDescripcion.setText(entrenamiento.getDescripcion());
+
+        if (!entrenamiento.getDescripcion().equals("")) {
+            tvHoraDescripcion.setText(entrenamiento.getDescripcion());
+            rl4.setVisibility(View.VISIBLE);
+        }
     }
 }

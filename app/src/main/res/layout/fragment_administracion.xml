@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.AdministracionFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="64dp">
+
+        <Button
+            android:id="@+id/cargarEquipos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cargar Equipos" />
+
+        <Button
+            android:id="@+id/cargarPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cargarEquipos"
+            android:layout_marginTop="40dp"
+            android:text="Cargar Contraseña" />
+
+
+    </RelativeLayout>
+
+
+</FrameLayout>

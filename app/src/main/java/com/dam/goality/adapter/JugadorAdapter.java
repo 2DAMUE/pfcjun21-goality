@@ -86,6 +86,7 @@ public class JugadorAdapter
 
         public void bindItem(Jugador jugador) {
             Glide.with(ivFoto).load(jugador.getFotoPerfilUrl())
+                    .centerCrop()
                     .into(ivFoto);
             tvNombreJugador.setText(jugador.getNombre() + " " + jugador.getApellidos());
             tvDorsalJugador.setText(String.valueOf(jugador.getDorsal()));

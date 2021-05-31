@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -31,7 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EstadisticasPrueba extends Fragment {
+public class EstadisticasPartidos extends Fragment {
 
     List<Partido> listaPartidos;
     TextView tvPartidosTotales;
@@ -49,7 +48,7 @@ public class EstadisticasPrueba extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_estadisticas_prueba, container, false);
+        View view = inflater.inflate(R.layout.fragment_estadisticas_partidos, container, false);
 
 //        tvPartidosTotales = view.findViewById(R.id.tvPartidosTotales);
         tvPartidosGanados = view.findViewById(R.id.tvPartidosGanados);
@@ -72,7 +71,6 @@ public class EstadisticasPrueba extends Fragment {
                 empatados++;
             }
         }
-        Toast.makeText(getContext(), "Empatados: " + empatados, Toast.LENGTH_SHORT).show();
     }
 
 
@@ -121,7 +119,7 @@ public class EstadisticasPrueba extends Fragment {
                 PieData pieData = new PieData(dataSet);
                 pieChart.setData(pieData);
                 pieChart.getDescription().setEnabled(true);
-                pieChart.setCenterText("Quarterly Recenue");
+                pieChart.setCenterText("Partidos jugados");
                 pieChart.animateY(1400, Easing.EaseInOutQuad);
 
 //                tvPartidosTotales.setText(String.valueOf(ganados + empatados + perdidos));
