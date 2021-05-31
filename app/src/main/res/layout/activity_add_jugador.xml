@@ -42,28 +42,44 @@
                 android:background="@drawable/bg_activity"
                 android:padding="40dp">
 
-                <EditText
-                    android:id="@+id/etNombre"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilNombre"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
-                    android:hint="Nombre" />
+                    android:layout_marginBottom="16dp"
+                    android:hint="Nombre"
+                    app:endIconMode="clear_text">
 
-                <EditText
-                    android:id="@+id/etApellidos"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etNombre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilApellidos"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/etNombre"
-                    android:layout_marginTop="24dp"
-                    android:fontFamily="@font/montserrat"
-                    android:hint="Apellidos" />
+                    android:layout_below="@+id/tilNombre"
+                    android:layout_marginBottom="16dp"
+                    android:hint="Apellidos"
+                    app:endIconMode="clear_text">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etApellidos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
                     android:id="@+id/llFechaNac"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/etApellidos"
-                    android:layout_marginTop="24dp"
+                    android:layout_below="@id/tilApellidos"
                     android:orientation="horizontal">
 
                     <TextView
@@ -91,8 +107,10 @@
                     android:layout_height="72dp"
                     android:layout_below="@id/llFechaNac"
                     android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp"
                     android:drawableLeft="@drawable/ic_fecha"
                     android:fontFamily="@font/montserrat"
+                    android:onClick="seleccionarFechaNacJ"
                     android:text="Seleccionar fecha de nacimiento" />
 
                 <TextView
@@ -100,7 +118,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/btnDate"
-                    android:layout_marginTop="24dp"
                     android:fontFamily="@font/montserrat_bold"
                     android:text="País de nacimiento:" />
 
@@ -125,7 +142,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tilNacimiento"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="16dp"
                     android:fontFamily="@font/montserrat_bold"
                     android:text="Posición:" />
 
@@ -149,29 +166,45 @@
                     android:id="@+id/linearlayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tilCargo">
+                    android:layout_below="@+id/tilCargo"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
 
-                    <EditText
-                        android:id="@+id/etPeso"
-                        android:layout_width="match_parent"
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="12dp"
+                        android:layout_below="@+id/tilNombre"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="16dp"
                         android:layout_weight="1"
-                        android:fontFamily="@font/montserrat"
                         android:hint="Peso"
-                        android:inputType="numberDecimal" />
+                        app:endIconMode="clear_text">
 
-                    <EditText
-                        android:id="@+id/etEstatura"
-                        android:layout_width="match_parent"
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etPeso"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_below="@+id/tilNombre"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginBottom="16dp"
                         android:layout_weight="1"
-                        android:fontFamily="@font/montserrat"
                         android:hint="Estatura"
-                        android:inputType="numberDecimal" />
+                        app:endIconMode="clear_text">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etEstatura"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
 
@@ -180,33 +213,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/linearlayout"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="16dp"
                     android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/montserrat_bold"
-                            android:text="Edad" />
-
-                        <NumberPicker
-                            android:id="@+id/npEdad"
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:fontFamily="@font/montserrat" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
                         android:layout_weight="1"
                         android:orientation="vertical">
 

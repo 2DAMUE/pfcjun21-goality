@@ -1,5 +1,6 @@
 package com.dam.goality;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -7,17 +8,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
-import com.dam.goality.dialogFragments.DatePickerFragment;
 import com.dam.goality.dialogFragments.TimePickerFragment;
 import com.google.android.material.slider.Slider;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -27,6 +28,7 @@ import java.util.HashMap;
 
 public class AddEntrenamiento extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
+    RelativeLayout rl;
     TextView horaEntrenamiento;
     TextView fechaEntrenamiento;
     Slider slider;
@@ -38,6 +40,7 @@ public class AddEntrenamiento extends AppCompatActivity implements TimePickerDia
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_entrenamiento);
 
+        rl = findViewById(R.id.rl);
         horaEntrenamiento = findViewById(R.id.horaEntrenamiento);
         fechaEntrenamiento = findViewById(R.id.fechaEntrenamiento);
         slider = findViewById(R.id.slider);
@@ -47,7 +50,7 @@ public class AddEntrenamiento extends AppCompatActivity implements TimePickerDia
         slider.addOnChangeListener(new Slider.OnChangeListener() {
             @Override
             public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
-                duracionEntrenamiento.setText(String.valueOf(value));
+                duracionEntrenamiento.setText(String.valueOf(Math.round(value)));
             }
         });
 
@@ -60,8 +63,18 @@ public class AddEntrenamiento extends AppCompatActivity implements TimePickerDia
     }
 
     public void seleccionarFecha(View view) {
-        DialogFragment datePicker = new DatePickerFragment();
-        datePicker.show(getSupportFragmentManager(), "date picker");
+//        DialogFragment datePicker = new DatePickerFragment();
+//        datePicker.show(getSupportFragmentManager(), "date picker");
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                this,
+                R.style.AppTheme_DatePickerDialog,
+                this,
+                Calendar.getInstance().get(Calendar.YEAR),
+                Calendar.getInstance().get(Calendar.MONTH),
+                Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+        );
+        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+        datePickerDialog.show();
     }
 
     public void aceptar(View view) {
@@ -69,7 +82,15 @@ public class AddEntrenamiento extends AppCompatActivity implements TimePickerDia
         String fecha = fechaEntrenamiento.getText().toString();
 
         if (hora.isEmpty() || fecha.isEmpty()) {
-            Toast.makeText(this, "Debe llenar todos los campos", Toast.LENGTH_SHORT).show();
+            Snackbar.make(rl, "Debe llenar todos los campos", Snackbar.LENGTH_LONG)
+                    .setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    })
+                    .setActionTextColor(getResources().getColor(R.color.primary))
+                    .show();
         } else {
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Entrenamientos");
             String EntrenamientoId = reference.push().getKey();
@@ -88,10 +109,6 @@ public class AddEntrenamiento extends AppCompatActivity implements TimePickerDia
             setResult(RESULT_OK, i);
             finish();
         }
-
-        Intent i = new Intent();
-        setResult(RESULT_OK, i);
-        finish();
     }
 
     public void cancelar(View view) {

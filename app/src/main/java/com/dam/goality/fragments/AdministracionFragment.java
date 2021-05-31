@@ -36,7 +36,7 @@ public class AdministracionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_estadisticas, container, false);
+        View view = inflater.inflate(R.layout.fragment_administracion, container, false);
 
 //        tvPartidosTotales = view.findViewById(R.id.tvPartidosTotales);
         tvPartidosGanados = view.findViewById(R.id.tvPartidosGanados);
@@ -78,7 +78,7 @@ public class AdministracionFragment extends Fragment {
     public void cargarEquipos() {
         listaEquipos = new ArrayList<>();
 
-        Equipo equipo1 = new Equipo("1", "https://firebasestorage.googleapis.com/v0/b/goality-753fc.appspot.com/o/Equipos%2FATLETICO%20CHOPERA%20ALCOBENDAS%2004%20A.png?alt=media&token=af2534df-6d36-49a3-81cf-9e00c1bf8190", "Atlético Chopera Alcobendas 04 A", "Alcobendas - Fuentelucha");
+        Equipo equipo1 = new Equipo("1", "https://firebasestorage.googleapis.com/v0/b/goality-753fc.appspot.com/o/Equipos%2FATLETICO%20CHOPERA%20ALCOBENDAS%2004%20A.png?alt=media&token=099c7c40-45e5-4b89-89be-a795020d0e29", "Atlético Chopera Alcobendas 04 A", "Alcobendas - Fuentelucha");
         Equipo equipo2 = new Equipo("2", "https://firebasestorage.googleapis.com/v0/b/goality-753fc.appspot.com/o/Equipos%2FA.D.%20COMPLUTENSE%20ALCALA%20A.png?alt=media&token=40665c90-1633-432d-b6c8-0f23485dc6ac", "A.D. Complutense Alcala A", "Alcalá - Recinto Ferial");
         Equipo equipo3 = new Equipo("3", "https://firebasestorage.googleapis.com/v0/b/goality-753fc.appspot.com/o/Equipos%2FA.D.%20SPORTING%20HORTALEZA%20A.png?alt=media&token=aa054cb6-6ed6-48a4-b70d-6257c3cb6ed3", "A.D. Sporting Hortaleza A", "Pvo. Mpal. Sporting Hortaleza");
         Equipo equipo4 = new Equipo("4", "https://firebasestorage.googleapis.com/v0/b/goality-753fc.appspot.com/o/Equipos%2FA.D.%20TORREJON%20C.F.%20B.png?alt=media&token=6bf991d3-d5eb-4f5a-9ac7-1fb85600b624", "A.D. Torrejón C.F. 'B'", "Torrejón de Ardoz - Est. Mpal. Las Veredillas");

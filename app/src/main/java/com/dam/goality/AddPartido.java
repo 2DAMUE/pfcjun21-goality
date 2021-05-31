@@ -198,7 +198,7 @@ public class AddPartido extends AppCompatActivity implements TimePickerDialog.On
             hashMap.put("id", partidoId);
             hashMap.put("miEquipo", "Atlético Chopera Alcobendas 04 A");
             hashMap.put("contrincante", contrincante);
-            hashMap.put("imgMiEquipo", "https://firebasestorage.googleapis.com/v0/b/goality-753fc.appspot.com/o/Equipos%2FATLETICO%20CHOPERA%20ALCOBENDAS%2004%20A.jpg?alt=media&token=a1b6a3e0-359c-4c02-8851-78e87548aa3f");
+            hashMap.put("imgMiEquipo", "https://firebasestorage.googleapis.com/v0/b/goality-753fc.appspot.com/o/Equipos%2FATLETICO%20CHOPERA%20ALCOBENDAS%2004%20A.png?alt=media&token=099c7c40-45e5-4b89-89be-a795020d0e29");
             hashMap.put("imgContrincante", lista.get(posVisitante).getImageUrl());
             hashMap.put("golesMiEquipo", -1);
             hashMap.put("golesContrincante", -1);

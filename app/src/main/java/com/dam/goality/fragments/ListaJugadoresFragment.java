@@ -215,9 +215,9 @@ public class ListaJugadoresFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
-            Toast.makeText(getActivity(), "OK", Toast.LENGTH_SHORT).show();
-        }
+//        if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
+//            Toast.makeText(getActivity(), "OK", Toast.LENGTH_SHORT).show();
+//        }
     }
 
     public void limpiarRecyclerView() {

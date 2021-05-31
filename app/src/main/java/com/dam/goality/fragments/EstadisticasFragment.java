@@ -21,13 +21,13 @@ public class EstadisticasFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_estadisticas2, container, false);
+        View view = inflater.inflate(R.layout.fragment_estadisticas, container, false);
 
         tab = view.findViewById(R.id.tab);
         tab.addOnTabSelectedListener(listener);
         flEstadisticas = view.findViewById(R.id.flEstadisticas);
 
-        selectedFragment = new EstadisticasPrueba();
+        selectedFragment = new EstadisticasPartidos();
         getFragmentManager().beginTransaction().replace(R.id.flEstadisticas, selectedFragment).commit();
 
         return view;
@@ -37,7 +37,7 @@ public class EstadisticasFragment extends Fragment {
         @Override
         public void onTabSelected(TabLayout.Tab tab) {
             if (tab.getPosition() == 0) {
-                selectedFragment = new EstadisticasPrueba();
+                selectedFragment = new EstadisticasPartidos();
                 getFragmentManager().beginTransaction().replace(R.id.flEstadisticas, selectedFragment).commit();
 
             } else if (tab.getPosition() == 1) {

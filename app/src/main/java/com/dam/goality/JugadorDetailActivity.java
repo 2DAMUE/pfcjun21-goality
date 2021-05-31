@@ -5,17 +5,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.dam.goality.model.Jugador;
+import com.google.android.material.snackbar.Snackbar;
 
 public class JugadorDetailActivity extends AppCompatActivity {
 
+    RelativeLayout rl;
     ImageView editProfile;
     ImageView ivFotoJugador;
     TextView tvNombre;
@@ -34,6 +36,7 @@ public class JugadorDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jugador_detail);
 
+        rl = findViewById(R.id.rl);
         editProfile = findViewById(R.id.editProfile);
         ivFotoJugador = findViewById(R.id.ivFotoJugador);
         tvNombre = findViewById(R.id.tvNombre);
@@ -57,7 +60,7 @@ public class JugadorDetailActivity extends AppCompatActivity {
         tvPosicionJugador.setText(jugador.getPosicion());
         tvPesoJugador.setText(String.valueOf(jugador.getPeso()));
         tvEstatura.setText(String.valueOf(jugador.getEstatura()));
-        tvEdad.setText(String.valueOf(jugador.getPeso()));
+        tvEdad.setText(String.valueOf(jugador.getEdad()));
         tvDorsal.setText(String.valueOf(jugador.getDorsal()));
 
     }
@@ -74,7 +77,15 @@ public class JugadorDetailActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 2 && resultCode == Activity.RESULT_OK) {
-            Toast.makeText(JugadorDetailActivity.this, "OK", Toast.LENGTH_SHORT).show();
+            Snackbar.make(rl, "Se ha editado exitosamente", Snackbar.LENGTH_LONG)
+                    .setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    })
+                    .setActionTextColor(getResources().getColor(R.color.primary))
+                    .show();
         }
     }
 }

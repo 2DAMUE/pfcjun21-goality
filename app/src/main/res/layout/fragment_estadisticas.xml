@@ -3,29 +3,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.AdministracionFragment">
+    tools:context=".fragments.EstadisticasFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="64dp">
+        android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/cargarEquipos"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cargar Equipos" />
+            android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/cargarPassword"
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabPartidos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Partidos" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabRendimiento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rendimiento" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <FrameLayout
+            android:id="@+id/flEstadisticas"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/cargarEquipos"
-            android:layout_marginTop="40dp"
-            android:text="Cargar Contraseña" />
-
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tab" />
 
     </RelativeLayout>
-
 
 </FrameLayout>

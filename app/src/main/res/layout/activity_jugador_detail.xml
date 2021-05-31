@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
@@ -20,7 +21,7 @@
         android:layout_height="40dp"
         android:layout_alignParentEnd="true"
         android:layout_margin="40dp"
-        android:background="@drawable/editprofile"
+        android:background="@drawable/edit"
         android:onClick="editarPerfil" />
 
     <TextView
@@ -62,7 +63,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/posicion"
-                    android:backgroundTint="@color/background2"/>
+                    android:backgroundTint="@color/background2" />
 
                 <TextView
                     android:id="@+id/posicion"
@@ -99,7 +100,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/dorsal"
-                    android:backgroundTint="@color/background2"/>
+                    android:backgroundTint="@color/background2" />
 
                 <TextView
                     android:id="@+id/tvPesoDorsalJugador"
@@ -127,7 +128,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/edad"
-                    android:backgroundTint="@color/background2"/>
+                    android:backgroundTint="@color/background2" />
 
                 <TextView
                     android:id="@+id/edad"
@@ -164,7 +165,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/peso"
-                    android:backgroundTint="@color/background2"/>
+                    android:backgroundTint="@color/background2" />
 
                 <TextView
                     android:id="@+id/estatura"
@@ -201,7 +202,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/add_peso"
-                    android:backgroundTint="@color/background2"/>
+                    android:backgroundTint="@color/background2" />
 
                 <TextView
                     android:id="@+id/peso"
@@ -238,7 +239,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/add_pais"
-                    android:backgroundTint="@color/background2"/>
+                    android:backgroundTint="@color/background2" />
 
                 <TextView
                     android:id="@+id/pais"
@@ -275,7 +276,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/add_fecha"
-                    android:backgroundTint="@color/background2"/>
+                    android:backgroundTint="@color/background2" />
 
                 <TextView
                     android:id="@+id/nacimiento"

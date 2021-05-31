@@ -5,16 +5,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpActivity extends AppCompatActivity {
 
+    ConstraintLayout cl;
     EditText etNombre;
     EditText etApellido;
     EditText etEmail;
@@ -31,6 +33,7 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+        cl = findViewById(R.id.cl);
         database = FirebaseDatabase.getInstance();
         reference = database.getReference();
         etNombre = findViewById(R.id.etNombre);
@@ -58,11 +61,27 @@ public class SignUpActivity extends AppCompatActivity {
 
 
         if (sNombre.isEmpty() || sApellido.isEmpty() || sEmail.isEmpty() || sPassword.isEmpty()) {
-            Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
+            Snackbar.make(cl, "Debe agregar todos los campos", Snackbar.LENGTH_LONG)
+                    .setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    })
+                    .setActionTextColor(getResources().getColor(R.color.primary))
+                    .show();
             pd.dismiss();
 
         } else if (sPassword.length() < 6) {
-            Toast.makeText(this, "La contraseña debe tener al menos 6 caracteres", Toast.LENGTH_SHORT).show();
+            Snackbar.make(cl, "La contraseña debe tener al menos 6 caracteres", Snackbar.LENGTH_LONG)
+                    .setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    })
+                    .setActionTextColor(getResources().getColor(R.color.primary))
+                    .show();
 
         } else {
             Intent i = new Intent(this, SignUpCuerpoTecnico.class);

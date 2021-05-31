@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -57,8 +55,6 @@ public class LoginActivity extends AppCompatActivity {
         String sPass = passwordLogin.getText().toString().trim();
 
         if (sEmail.isEmpty() || sPass.isEmpty()) {
-//            Toast.makeText(this, "Debes rellenar todos los campos", Toast.LENGTH_SHORT).show();
-
             Snackbar.make(cl, "Debes rellenar todos los campos", Snackbar.LENGTH_SHORT)
                     .setAction("OK", new View.OnClickListener() {
                         @Override
@@ -97,7 +93,15 @@ public class LoginActivity extends AppCompatActivity {
                                 });
                             } else {
                                 pd.dismiss();
-                                Toast.makeText(LoginActivity.this, "La autenticación ha fallado", Toast.LENGTH_SHORT).show();
+                                Snackbar.make(cl, "La autenticación ha fallado", Snackbar.LENGTH_LONG)
+                                        .setAction("OK", new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+
+                                            }
+                                        })
+                                        .setActionTextColor(getResources().getColor(R.color.primary))
+                                        .show();
                             }
                         }
                     });

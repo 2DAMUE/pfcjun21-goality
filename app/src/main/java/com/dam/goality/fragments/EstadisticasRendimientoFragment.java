@@ -78,7 +78,7 @@ public class EstadisticasRendimientoFragment extends Fragment {
                 PieData pieData = new PieData(dataSet);
                 pieChart.setData(pieData);
                 pieChart.getDescription().setEnabled(true);
-                pieChart.setCenterText("Quarterly Recenue");
+                pieChart.setCenterText("Rendimiento");
                 pieChart.animateY(1400, Easing.EaseInOutQuad);
             }
 
