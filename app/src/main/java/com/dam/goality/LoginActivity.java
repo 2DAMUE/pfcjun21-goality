@@ -109,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void irSignup(View view) {
-        Intent i = new Intent(this, SignUpActivity.class);
+        Intent i = new Intent(this, IngresoActivity.class);
         startActivity(i);
     }
 

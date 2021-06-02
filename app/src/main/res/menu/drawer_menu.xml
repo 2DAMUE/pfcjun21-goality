@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view" >
+    tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_miperfil"
+            android:icon="@drawable/ic_mi_perfil"
             android:title="Mi perfil" />
 
         <item
-            android:id="@+id/nav_tutorial"
-            android:title="Tutorial" />
+            android:id="@+id/nav_cambiar_pass"
+            android:icon="@drawable/ic_password"
+            android:title="Cambiar password" />
 
         <item
             android:id="@+id/nav_aboutus"
+            android:icon="@drawable/ic_about_us"
             android:title="Sobre nosotros" />
 
         <item
             android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_logout"
             android:title="Cerrar sesión" />
     </group>
 

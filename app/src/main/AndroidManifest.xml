@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Goality">
         <activity
+            android:name=".CambiarPassActivity"
+            android:theme="@style/Theme.GoalityNoActionBar" />
+        <activity
+            android:name=".IngresoActivity"
+            android:theme="@style/Theme.GoalityNoActionBar" />
+        <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
         <activity
