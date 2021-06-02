@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.Continuation;
@@ -23,6 +24,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -45,6 +47,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AddJugador extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
+    ConstraintLayout cl;
     TextInputLayout tilNacimiento;
     AutoCompleteTextView atvNacimiento;
     List<String> listaPaises;
@@ -80,6 +83,7 @@ public class AddJugador extends AppCompatActivity implements DatePickerDialog.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_jugador);
 
+        cl = findViewById(R.id.cl);
         tilNacimiento = findViewById(R.id.tilNacimiento);
         atvNacimiento = findViewById(R.id.atvNacimiento);
 
@@ -178,7 +182,7 @@ public class AddJugador extends AppCompatActivity implements DatePickerDialog.On
             c1.setTime(d1);
             c2.setTime(d2);
 
-            edad = c2.get(Calendar.YEAR) - c1.get(Calendar.YEAR) -1;
+            edad = c2.get(Calendar.YEAR) - c1.get(Calendar.YEAR) - 1;
 
         } catch (ParseException e) {
             e.printStackTrace();
@@ -214,7 +218,15 @@ public class AddJugador extends AppCompatActivity implements DatePickerDialog.On
                 || nacionalidad.equalsIgnoreCase("Selecciona el país")
                 || posicion.equalsIgnoreCase("Selecciona la posición")
                 || peso.isEmpty() || estatura.isEmpty()) {
-            Toast.makeText(this, "Debe agregar todos los campos", Toast.LENGTH_SHORT).show();
+            Snackbar.make(cl, "Debe llenar todos los campos", Snackbar.LENGTH_LONG)
+                    .setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    })
+                    .setActionTextColor(getResources().getColor(R.color.primary))
+                    .show();
         } else {
             upload(peso, estatura);
         }

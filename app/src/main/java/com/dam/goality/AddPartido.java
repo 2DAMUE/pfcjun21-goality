@@ -9,10 +9,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +21,7 @@ import androidx.fragment.app.DialogFragment;
 import com.dam.goality.dialogFragments.TimePickerFragment;
 import com.dam.goality.model.Equipo;
 import com.google.android.material.chip.Chip;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,6 +36,7 @@ import java.util.HashMap;
 
 public class AddPartido extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener, AdapterView.OnItemSelectedListener {
 
+    RelativeLayout rl;
     TextView horaPartido;
     TextView fechaPartido;
     Spinner spnVisitante;
@@ -64,6 +66,7 @@ public class AddPartido extends AppCompatActivity implements TimePickerDialog.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_partido);
 
+        rl = findViewById(R.id.rl);
         spnVisitante = findViewById(R.id.spnVisitante);
         horaPartido = findViewById(R.id.horaPartido);
         fechaPartido = findViewById(R.id.fechaPartido);
@@ -186,34 +189,55 @@ public class AddPartido extends AppCompatActivity implements TimePickerDialog.On
         String hora = horaPartido.getText().toString();
         String fecha = fechaPartido.getText().toString();
 
-        if (contrincante.isEmpty() || hora.isEmpty() || fecha.isEmpty()) {
-            Toast.makeText(this, "Debe llenar todos los campos", Toast.LENGTH_SHORT).show();
+        if (contrincante.equalsIgnoreCase("Selecciona el contrincante") || hora.isEmpty() || fecha.isEmpty()) {
+            Snackbar.make(rl, "Debes llenar todos los campos", Snackbar.LENGTH_LONG)
+                    .setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    })
+                    .setActionTextColor(getResources().getColor(R.color.primary))
+                    .show();
         } else {
-            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Partidos");
-            String partidoId = reference.push().getKey();
-            String cond = (cpLocal.isChecked()) ? "Local" : "Visitante";
+
+            if (contrincante.equalsIgnoreCase("Atlético Chopera Alcobendas 04 A")) {
+                Snackbar.make(rl, "No puedes seleccionar al Atlético Chopera como contrincante", Snackbar.LENGTH_LONG)
+                        .setAction("OK", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                            }
+                        })
+                        .setActionTextColor(getResources().getColor(R.color.primary))
+                        .show();
+
+            } else {
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Partidos");
+                String partidoId = reference.push().getKey();
+                String cond = (cpLocal.isChecked()) ? "Local" : "Visitante";
 
 //            hashMap.put("local", local);
-            HashMap<String, Object> hashMap = new HashMap<>();
-            hashMap.put("id", partidoId);
-            hashMap.put("miEquipo", "Atlético Chopera Alcobendas 04 A");
-            hashMap.put("contrincante", contrincante);
-            hashMap.put("imgMiEquipo", "https://firebasestorage.googleapis.com/v0/b/goality-753fc.appspot.com/o/Equipos%2FATLETICO%20CHOPERA%20ALCOBENDAS%2004%20A.png?alt=media&token=099c7c40-45e5-4b89-89be-a795020d0e29");
-            hashMap.put("imgContrincante", lista.get(posVisitante).getImageUrl());
-            hashMap.put("golesMiEquipo", -1);
-            hashMap.put("golesContrincante", -1);
-            hashMap.put("condicion", cond);
-            hashMap.put("horaPartido", hora);
-            hashMap.put("fechaPartido", fecha);
-            hashMap.put("estadio", (cpLocal.isChecked() ? "Alcobendas - Fuentelucha" : lista.get(posVisitante).getEstadio()));
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("id", partidoId);
+                hashMap.put("miEquipo", "Atlético Chopera Alcobendas 04 A");
+                hashMap.put("contrincante", contrincante);
+                hashMap.put("imgMiEquipo", "https://firebasestorage.googleapis.com/v0/b/goality-753fc.appspot.com/o/Equipos%2FATLETICO%20CHOPERA%20ALCOBENDAS%2004%20A.png?alt=media&token=099c7c40-45e5-4b89-89be-a795020d0e29");
+                hashMap.put("imgContrincante", lista.get(posVisitante).getImageUrl());
+                hashMap.put("golesMiEquipo", -1);
+                hashMap.put("golesContrincante", -1);
+                hashMap.put("condicion", cond);
+                hashMap.put("horaPartido", hora);
+                hashMap.put("fechaPartido", fecha);
+                hashMap.put("estadio", (cpLocal.isChecked() ? "Alcobendas - Fuentelucha" : lista.get(posVisitante).getEstadio()));
 
-            reference.child(partidoId).setValue(hashMap);
+                reference.child(partidoId).setValue(hashMap);
 
-            Intent i = new Intent();
-            setResult(RESULT_OK, i);
-            finish();
+                Intent i = new Intent();
+                setResult(RESULT_OK, i);
+                finish();
+            }
         }
-
     }
 
     public void cancelar(View view) {

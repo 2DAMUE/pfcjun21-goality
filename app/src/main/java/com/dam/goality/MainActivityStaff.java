@@ -10,10 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import com.dam.goality.fragments.AdministracionFragment;
@@ -26,10 +29,11 @@ import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivityStaff extends AppCompatActivity {
+public class MainActivityStaff extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     //    BottomNavigationView bottomNavigation;
     ConstraintLayout cl;
@@ -41,6 +45,9 @@ public class MainActivityStaff extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     BottomSheetDialog bottomSheetDialog;
 
+    // navigationDrawer
+    private DrawerLayout drawer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,11 +57,26 @@ public class MainActivityStaff extends AppCompatActivity {
         selectedFragment = new PartidoFragment();
         titleToolbar = findViewById(R.id.titleToolbar);
 
+// Navigation Drawr
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        drawer = findViewById(R.id.drawerLayout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
         cl = findViewById(R.id.cl);
         toolbar = findViewById(R.id.toolbar);
         toolbar.setOnMenuItemClickListener(listener);
         bottom_app_bar = findViewById(R.id.bottom_app_bar);
         bottom_app_bar.setOnMenuItemClickListener(listener2);
+
         fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,6 +129,42 @@ public class MainActivityStaff extends AppCompatActivity {
 
     }
 
+    // Abre activities tras pulsar en elementos del NavigationDrawer
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId() == R.id.nav_miperfil) {
+            Intent i = new Intent(this, MiPerfilActivity.class);
+            startActivity(i);
+
+        } else if (item.getItemId() == R.id.nav_cambiar_pass) {
+            Intent i = new Intent(this, CambiarPassActivity.class);
+            startActivity(i);
+
+        } else if (item.getItemId() == R.id.nav_aboutus) {
+
+
+        } else if (item.getItemId() == R.id.nav_logout) {
+            MaterialAlertDialogBuilder alertDialog = new MaterialAlertDialogBuilder(this);
+            alertDialog.setMessage("¿Estás seguro que deseas salir?");
+            alertDialog.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    firebaseAuth.signOut();
+                    finish();
+                }
+            });
+            alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+            alertDialog.create().show();
+        }
+
+        return true;
+    }
+
     private androidx.appcompat.widget.Toolbar.OnMenuItemClickListener listener = new Toolbar.OnMenuItemClickListener() {
         @Override
         public boolean onMenuItemClick(MenuItem item) {
@@ -127,10 +185,17 @@ public class MainActivityStaff extends AppCompatActivity {
                     }
                 });
                 alertDialog.create().show();
+
             } else if (item.getItemId() == R.id.editarPerfil) {
                 Intent i = new Intent(MainActivityStaff.this, MiPerfilActivity.class);
                 startActivityForResult(i, 5);
+
+            } else if (item.getItemId() == R.id.passEquipo) {
+                Intent i = new Intent(MainActivityStaff.this, CambiarPassActivity.class);
+                startActivityForResult(i, 6);
+
             }
+
             return true;
         }
     };
@@ -218,6 +283,18 @@ public class MainActivityStaff extends AppCompatActivity {
 
         if (requestCode == 5 && resultCode == Activity.RESULT_OK) {
             Snackbar.make(cl, "Perfil editado exitosamente", Snackbar.LENGTH_LONG)
+                    .setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    })
+                    .setActionTextColor(getResources().getColor(R.color.primary))
+                    .show();
+        }
+
+        if (requestCode == 6 && resultCode == Activity.RESULT_OK) {
+            Snackbar.make(cl, "La contraseña del equipo ha sido actualizada exitosamente", Snackbar.LENGTH_LONG)
                     .setAction("OK", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
