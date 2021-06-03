@@ -19,7 +19,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
-import com.dam.goality.fragments.AdministracionFragment;
 import com.dam.goality.fragments.EntrenamientoFragment;
 import com.dam.goality.fragments.EstadisticasFragment;
 import com.dam.goality.fragments.ListaFragment;
@@ -141,6 +140,8 @@ public class MainActivityStaff extends AppCompatActivity implements NavigationVi
             startActivity(i);
 
         } else if (item.getItemId() == R.id.nav_aboutus) {
+            Intent i = new Intent(this, AboutUsActivity.class);
+            startActivity(i);
 
 
         } else if (item.getItemId() == R.id.nav_logout) {
@@ -215,9 +216,9 @@ public class MainActivityStaff extends AppCompatActivity implements NavigationVi
                 titleToolbar.setText("Mi Equipos");
                 selectedFragment = new ListaFragment();
 
-            } else if (item.getItemId() == R.id.estadisticas) {
-                titleToolbar.setText("Estadísticas");
-                selectedFragment = new AdministracionFragment();
+//            } else if (item.getItemId() == R.id.estadisticas) {
+//                titleToolbar.setText("Estadísticas");
+//                selectedFragment = new AdministracionFragment();
             } else if (item.getItemId() == R.id.est) {
                 selectedFragment = new EstadisticasFragment();
             }
