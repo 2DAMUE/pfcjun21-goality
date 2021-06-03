@@ -30,10 +30,10 @@
     <!-- Colores -->
     <color name="chip1">#EA5D66</color>
     <color name="chip2">#7BC678</color>
-    <color name="chip3">#ECB35D</color>
-    <color name="chip4">#3D4D74</color>
-    <color name="chip5">#246396</color>
-    <color name="chip6">#205987</color>
-    <color name="chip7">#184163</color>
+    <color name="chip3">#F2A341</color>
+    <color name="chip4">#198A9C</color>
+    <color name="chip5">#468B60</color>
+    <color name="chip6">#0F6D5F</color>
+    <color name="chip7">#79C5D5</color>
 
 </resources>

@@ -6,29 +6,31 @@
         android:id="@+id/home"
         android:icon="@drawable/ic_home"
         android:title="Home"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
     <item
         android:id="@+id/calendario"
         android:icon="@drawable/ic_dalendario"
         android:title="Calendario"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/personas"
         android:icon="@drawable/ic_personas"
         android:title="Personas"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
 
+    <!--
     <item
         android:id="@+id/estadisticas"
         android:icon="@drawable/ic_estadisticas"
         android:title="Estadísticas"
         app:showAsAction="always"/>
+        -->
 
     <item
         android:id="@+id/est"
         android:icon="@drawable/ic_estadisticas"
         android:title="Estadísticas"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
 
 </menu>

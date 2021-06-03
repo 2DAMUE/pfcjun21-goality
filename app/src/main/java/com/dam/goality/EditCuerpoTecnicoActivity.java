@@ -166,7 +166,7 @@ public class EditCuerpoTecnicoActivity extends AppCompatActivity implements Date
             c1.setTime(d1);
             c2.setTime(d2);
 
-            edad = c2.get(Calendar.YEAR) - c1.get(Calendar.YEAR) - 1;
+            edad = c2.get(Calendar.YEAR) - c1.get(Calendar.YEAR);
 
         } catch (ParseException e) {
             e.printStackTrace();

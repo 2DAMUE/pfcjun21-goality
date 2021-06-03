@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Goality">
         <activity
+            android:name=".AboutUsActivity"
+            android:theme="@style/Theme.GoalityNoActionBar" />
+        <activity
             android:name=".CambiarPassActivity"
             android:theme="@style/Theme.GoalityNoActionBar" />
         <activity

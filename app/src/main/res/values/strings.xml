@@ -5,4 +5,13 @@
     <string name="vs">%1$s : %2$s</string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
+
+    <string name="tv_aboutus_version">Versión Alpha</string>
+    <string name="tv_aboutus_desc">Goality es una app desarollada por estudiantes de Desarrollo de Aplicaciones Multiplataforma de la Universidad Europea de Madrid.</string>
+    <string name="tv_aboutus_desc2">https://github.com/2DAMUE/pfcjun21-goality</string>
+    <string name="tv_aboutus_desc3">© 2021</string>
+    <string name="tv_aboutus_credits1">Santiago Torres</string>
+    <string name="tv_aboutus_credits2">Nacho Jimenez</string>
+    <string name="tv_aboutus_credits3">Sean Leitch</string>
+    <string name="tv_aboutus_credits4">Juan Moreno</string>
 </resources>
