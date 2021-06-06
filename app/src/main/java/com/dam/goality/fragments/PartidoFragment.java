@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.dam.goality.PartidoDetailActivity;
 import com.dam.goality.R;
 import com.dam.goality.adapter.PartidosAdapter;
@@ -29,7 +30,10 @@ import java.util.List;
 
 public class PartidoFragment extends Fragment {
 
+    private static final String TAG = "PartidoFragment";
+
     //    Button btnAddEquipo;
+    SwipeMenuListView listView;
     Chip cpPartidos;
     Chip cpLocal;
     Chip cpVisitante;
@@ -45,6 +49,7 @@ public class PartidoFragment extends Fragment {
 
 //        btnAddEquipo = view.findViewById(R.id.btnAddEquipo);
 
+        listView = view.findViewById(R.id.listView);
         cpPartidos = view.findViewById(R.id.cpPartidos);
         cpPartidos.setChecked(true);
         cpLocal = view.findViewById(R.id.cpLocal);
