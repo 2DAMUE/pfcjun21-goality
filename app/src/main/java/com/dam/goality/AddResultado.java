@@ -5,13 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.dam.goality.model.Partido;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -19,6 +20,7 @@ import java.util.HashMap;
 
 public class AddResultado extends AppCompatActivity {
 
+    RelativeLayout rl;
     Partido p;
     EditText etResultado1;
     EditText etResultado2;
@@ -34,6 +36,7 @@ public class AddResultado extends AppCompatActivity {
 
         p = getIntent().getParcelableExtra("PARTIDO");
 
+        rl = findViewById(R.id.rl);
         etResultado1 = findViewById(R.id.etResultado1);
         etResultado2 = findViewById(R.id.etResultado2);
         ivEquipo1 = findViewById(R.id.ivEquipo1);
@@ -80,7 +83,15 @@ public class AddResultado extends AppCompatActivity {
         String visitante = etResultado2.getText().toString();
 
         if (local.isEmpty() || visitante.isEmpty()) {
-            Toast.makeText(this, "Debes ingresar el resultado", Toast.LENGTH_SHORT).show();
+            Snackbar.make(rl, "Debe ingresar el resultado", Snackbar.LENGTH_LONG)
+                    .setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    })
+                    .setActionTextColor(getResources().getColor(R.color.primary))
+                    .show();
         } else {
             if (p.getCondicion().equalsIgnoreCase("Local")) {
                 updatePartido(local, visitante);

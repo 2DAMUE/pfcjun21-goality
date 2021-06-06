@@ -6,19 +6,21 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.dam.goality.model.Partido;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.text.ParseException;
 
 public class PartidoDetailActivity extends AppCompatActivity {
 
+    RelativeLayout rl;
     ImageView ivLocal;
     ImageView ivVisitante;
     TextView tvLocal;
@@ -35,6 +37,7 @@ public class PartidoDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_partido_detail);
 
+        rl = findViewById(R.id.rl);
         ivLocal = findViewById(R.id.ivLocal);
         ivVisitante = findViewById(R.id.ivVisitante);
         tvLocal = findViewById(R.id.tvLocal);
@@ -78,7 +81,15 @@ public class PartidoDetailActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
-            Toast.makeText(PartidoDetailActivity.this, "OK", Toast.LENGTH_SHORT).show();
+            Snackbar.make(rl, "El resultado ha sido agregado", Snackbar.LENGTH_LONG)
+                    .setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    })
+                    .setActionTextColor(getResources().getColor(R.color.primary))
+                    .show();
         }
 
     }
