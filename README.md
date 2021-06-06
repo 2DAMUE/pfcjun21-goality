@@ -1,23 +1,36 @@
-# Instrucciones para conectar proyecto Android Studio al repositorio en Github
+# Goality | Team Manager
+Proyecto Fin de Ciclo 2021 @ UEM desarrollado por:
 
-> NO OLVIDES SUSTITUIR ESTE README POR CAPTURAS DE TU APLICACIÓN EN CUANTO LAS TENGAS
+- Santiago Torres  
+- Nacho Jimenez  
+- Sean Leitch  
 
-1. Sincroniza tu proyecto creado en Android Studio con ese repositorio, para ello y desde una terminal tipo Git Bash situate en la carpeta del proyecto y lanza los siguientes comandos:
+## ¿Qué es Goality?
+Goality es una aplicación de gestión de jugadores y equipos de fútbol. Permite que los usuarios se den de alta como miembros del equipo técnico, ver los resultados de su equipo, convocar entrenamientos, manejar los perfiles de los miembros además de visualizar las estadísticas de los jugadores y su equipo. Ayudará a los clubes a tener centralizados y accesibles todos los datos y estadísticas de sus jugadores. 
+Para el desarrollo de este proyecto hemos contactado con el equipo Atlético Chopera Alcobendas 04,.
 
-	$ git init
+## GALERÍA
+### Inicio
+| Splash | Login | Seguridad | Signup | Signup |
+|:-:|:-:|:-:|:-:|-|
+| ![](app/img/1_splash.png) | ![](app/img/2_login.png) | ![](app/img/3_seguridad.png) | ![](app/img/4_signup.png) | ![](app/img/5_signup.png) | 
 
-	$ git add -A
+### Mis Partidos y entrenamientos
+| Partidos | P. Detalle | Agregar Resultado | Entrenamientos | Ent. Detalle |
+|:-:|:-:|:-:|:-:|:-:|
+| ![](app/img/6_1_home.png) | ![](app/img/6_2_home.png) | ![](app/img/6_3_home.png) | ![](app/img/7_1_entrenamiento.png) | ![](app/img/7_2_entrenamiento.png) |
 
-	$ git commit -am "initial commit"
+### Perfiles de los miembros del equipo y rendimiento
+| Lista Equipo | Detalle | Editar | Rendimiento 1 | Rendimiento 2 |
+|:-:|:-:|:-:|:-:|:-:|
+| ![](app/img/8_1_equipo.png) | ![](app/img/8_2_equipo.png) | ![](app/img/8_3_equipo.png) | ![](app/img/9_1_rendimiento.png) | ![](app/img/9_2_rendimiento.png) |
 
-	$ git remote add origin https://github.com/2DAMUE/repositorio-equipo.git
+### Perfiles de los miembros del equipo y rendimiento
+| Bottom menu | Nav. Drawer | Edit Pass | Información |
+|:-:|:-:|:-:|:-:|
+| ![](app/img/10_bottom_menu.png) | ![](app/img/11_navigation_drawer.png) | ![](app/img/12_cambiar_pass.png) | ![](app/img/13_about_us.png) |
 
-	$ git pull origin master --allow-unrelated-histories
-
-	// primero descargaremos hacia nuestro AS los archivos que ya existen en Github con un pull antes de hacer un push del código)
-	// y si se abre el editor vi, tenéis que teclear tecla ESC y luego :wq con tecla Enter al final
-
-	$ git push origin master
-
-
-2. Una vez que tengas tu proyecto Android Studio creado y sincronizado, dentro de la carpeta "docs" en AS sustituirás la versión actual por tu versión de las plantillas de Anteproyecto y Memoria
+### Previsuzalización de la aplicación
+| Bottom menu |
+|:-:|
+| ![](app/img/14.gif) |
