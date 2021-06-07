@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.chauthai.swipereveallayout.ViewBinderHelper;
 import com.dam.goality.R;
 import com.dam.goality.model.Partido;
 
@@ -23,7 +24,7 @@ public class PartidosAdapter
 
     private Context mContext;
     private List<Partido> listaEquipos;
-
+    private ViewBinderHelper viewBinderHelper = new ViewBinderHelper();
     private View.OnClickListener listener;
 
     public PartidosAdapter(Context mContext, List<Partido> listaEquipos) {

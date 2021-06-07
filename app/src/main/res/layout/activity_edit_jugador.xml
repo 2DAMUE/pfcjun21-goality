@@ -16,6 +16,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/regresar"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/ic_regresar"
+                android:onClick="cancelarCambios" />
+
+            <ImageView
+                android:id="@+id/ivAceptar"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/ic_checked"
+                android:onClick="aceptarCambios" />
+
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/ivFotoJugador"
                 android:layout_width="150dp"

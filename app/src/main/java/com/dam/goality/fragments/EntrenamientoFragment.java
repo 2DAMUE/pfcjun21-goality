@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +18,7 @@ import com.dam.goality.EntrenamientoDetailActivity;
 import com.dam.goality.R;
 import com.dam.goality.adapter.EntrenamientoAdapter;
 import com.dam.goality.model.Entrenamiento;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,6 +29,7 @@ import java.util.ArrayList;
 
 public class EntrenamientoFragment extends Fragment {
 
+    RelativeLayout rl;
     DatabaseReference mDatabase;
     //    Button btnAddEquipo;
     RecyclerView rvEntrenamientos;
@@ -41,6 +43,7 @@ public class EntrenamientoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_calendario, container, false);
 
 //        btnAddEquipo = view.findViewById(R.id.btnAddEquipo);
+        rl = view.findViewById(R.id.rl);
         rvEntrenamientos = view.findViewById(R.id.rvEntrenamientos);
 
         rvEntrenamientos.setHasFixedSize(true);
@@ -78,7 +81,7 @@ public class EntrenamientoFragment extends Fragment {
 
                         Intent intent = new Intent(getContext(), EntrenamientoDetailActivity.class);
                         intent.putExtra("ENTRENAMIENTO", entrenamiento);
-                        startActivity(intent);
+                        startActivityForResult(intent, 1);
                     }
                 });
 
@@ -97,7 +100,16 @@ public class EntrenamientoFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
-            Toast.makeText(getActivity(), "OK", Toast.LENGTH_SHORT).show();
+            Snackbar.make(rl, "El entrenamiento ha sido eliminado", Snackbar.LENGTH_LONG)
+                    .setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    })
+                    .setActionTextColor(getResources().getColor(R.color.primary))
+                    .show();
+            ;
         }
 
     }

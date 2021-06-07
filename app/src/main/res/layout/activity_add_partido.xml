@@ -2,39 +2,67 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/rl"
     android:background="@color/background"
     tools:context=".AddPartido">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/llTitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="24dp">
 
-        <TextView
-            android:id="@+id/addPartidoTitulo1"
+        <ImageView
+            android:id="@+id/regresar"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_regresar"
+            android:onClick="cancelar" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat"
-            android:text="Nuevo"
-            android:textColor="@color/background3"
-            android:textSize="30sp" />
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/addPartidoTitulo2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/addPartidoTitulo1"
-            android:fontFamily="@font/montserrat_bold"
-            android:text=" partido"
-            android:textColor="@color/background3"
-            android:textSize="30sp" />
+            <TextView
+                android:id="@+id/addPartidoTitulo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/regresar"
+                android:fontFamily="@font/montserrat"
+                android:text="Nuevo"
+                android:textColor="@color/background3"
+                android:textSize="20sp" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/addPartidoTitulo2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/addPartidoTitulo1"
+                android:fontFamily="@font/montserrat_bold"
+                android:text=" partido"
+                android:textColor="@color/background3"
+                android:textSize="20sp" />
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivAceptar"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_checked"
+            android:onClick="aceptar" />
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
