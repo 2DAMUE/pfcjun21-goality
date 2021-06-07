@@ -16,13 +16,35 @@
         android:src="@drawable/pp" />
 
     <ImageView
+        android:id="@+id/regresar"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/ic_regresar"
+        android:onClick="cancelar" />
+
+    <ImageView
         android:id="@+id/editProfile"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_alignParentEnd="true"
-        android:layout_margin="40dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="24dp"
         android:background="@drawable/edit"
         android:onClick="editarPerfil" />
+
+    <ImageView
+        android:id="@+id/deleteProfile"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:layout_toStartOf="@id/editProfile"
+        android:background="@drawable/remove"
+        android:onClick="eliminarPerfil" />
 
     <TextView
         android:id="@+id/tvNombre"

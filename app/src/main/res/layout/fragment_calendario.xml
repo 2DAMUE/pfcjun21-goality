@@ -1,37 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background3"
     tools:context=".fragments.EntrenamientoFragment">
 
-    <RelativeLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvEntrenamientos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background3">
+        android:layout_marginTop="16dp" />
 
-        <!--
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnAddEquipo"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_below="@+id/llTitulo"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="@color/primary"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="Nuevo entrenamiento"
-            android:textSize="16sp" />
-            -->
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvEntrenamientos"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="16dp" />
-
-    </RelativeLayout>
-
-</FrameLayout>
+</RelativeLayout>

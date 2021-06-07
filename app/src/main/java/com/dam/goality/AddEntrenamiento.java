@@ -1,6 +1,5 @@
 package com.dam.goality;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -81,7 +80,7 @@ public class AddEntrenamiento extends AppCompatActivity implements TimePickerDia
         String hora = horaEntrenamiento.getText().toString();
         String fecha = fechaEntrenamiento.getText().toString();
 
-        if (hora.isEmpty() || fecha.isEmpty()) {
+        if (hora.isEmpty() || fecha.isEmpty() || slider.getValue() == 0) {
             Snackbar.make(rl, "Debe llenar todos los campos", Snackbar.LENGTH_LONG)
                     .setAction("OK", new View.OnClickListener() {
                         @Override

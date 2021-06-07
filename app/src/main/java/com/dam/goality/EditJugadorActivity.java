@@ -330,4 +330,10 @@ public class EditJugadorActivity extends AppCompatActivity implements DatePicker
             finish();
         }
     }
+
+    public void eliminarPerfil(View view) {
+        Intent intent = new Intent(EditJugadorActivity.this, MainActivityStaff.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
 }

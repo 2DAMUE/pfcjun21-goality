@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,6 +21,7 @@ import com.dam.goality.R;
 import com.dam.goality.adapter.CuerpoTecnicoAdapter;
 import com.dam.goality.model.CuerpoTecnico;
 import com.google.android.material.chip.Chip;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,7 +33,8 @@ import java.util.ArrayList;
 
 public class ListaCuerpoTecnicoStaff extends Fragment {
 
-//    Button btnAddCuerpoTecnico;
+    //    Button btnAddCuerpoTecnico;
+    FrameLayout fl;
     RecyclerView rvCuerpoTecnico;
     ArrayList<CuerpoTecnico> listaCT;
     CuerpoTecnicoAdapter adapter;
@@ -51,7 +55,7 @@ public class ListaCuerpoTecnicoStaff extends Fragment {
         View view = inflater.inflate(R.layout.fragment_lista_cuerpo_tecnico_staff, container, false);
 
 //        btnAddCuerpoTecnico = view.findViewById(R.id.btnAddCuerpoTecnico);
-
+        fl = view.findViewById(R.id.fl);
         rvCuerpoTecnico = view.findViewById(R.id.rvCuerpoTecnico);
         rvCuerpoTecnico.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -176,7 +180,7 @@ public class ListaCuerpoTecnicoStaff extends Fragment {
 
                         Intent intent = new Intent(getContext(), CuerpoTecnicoDetailActivity.class);
                         intent.putExtra("CUERPO_TECNICO", cu);
-                        startActivity(intent);
+                        startActivityForResult(intent, 1);
                     }
                 });
 
@@ -216,7 +220,7 @@ public class ListaCuerpoTecnicoStaff extends Fragment {
 
                         Intent intent = new Intent(getContext(), CuerpoTecnicoDetailActivity.class);
                         intent.putExtra("CUERPO_TECNICO", cu);
-                        startActivity(intent);
+                        startActivityForResult(intent, 1);
                     }
                 });
 
@@ -234,10 +238,18 @@ public class ListaCuerpoTecnicoStaff extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-//
-//        if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
-//            Toast.makeText(getActivity(), "OK", Toast.LENGTH_SHORT).show();
-//        }
+
+        if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
+            Snackbar.make(fl, "El miembro del cuerpo técnico se ha eliminado correctamente", Snackbar.LENGTH_LONG)
+                    .setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    })
+                    .setActionTextColor(getResources().getColor(R.color.primary))
+                    .show();
+        }
     }
 
     public void limpiarRecyclerView() {

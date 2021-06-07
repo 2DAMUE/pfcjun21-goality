@@ -14,4 +14,5 @@
     <string name="tv_aboutus_credits2">Nacho Jimenez</string>
     <string name="tv_aboutus_credits3">Sean Leitch</string>
     <string name="tv_aboutus_credits4">Juan Moreno</string>
+    <string name="iv_alerta">No se han ingresado personal para el cargo seleccionado</string>
 </resources>

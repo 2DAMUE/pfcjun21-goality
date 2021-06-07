@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,6 +19,7 @@ import com.dam.goality.R;
 import com.dam.goality.adapter.JugadorAdapter;
 import com.dam.goality.model.Jugador;
 import com.google.android.material.chip.Chip;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,6 +32,7 @@ import java.util.List;
 
 public class ListaJugadoresFragment extends Fragment {
 
+    RelativeLayout rl;
     RecyclerView rvJugadores;
     List<Jugador> listaJugadores;
     JugadorAdapter adapter;
@@ -51,6 +53,7 @@ public class ListaJugadoresFragment extends Fragment {
 
 //        btnAddEquipo = view.findViewById(R.id.btnAddEquipo);
 
+        rl = view.findViewById(R.id.rl);
         rvJugadores = view.findViewById(R.id.rvJugadores);
         rvJugadores.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -151,7 +154,7 @@ public class ListaJugadoresFragment extends Fragment {
 
                         Intent intent = new Intent(getContext(), JugadorDetailActivity.class);
                         intent.putExtra("JUGADOR", jugador);
-                        startActivity(intent);
+                        startActivityForResult(intent, 1);
                     }
                 });
 
@@ -196,7 +199,7 @@ public class ListaJugadoresFragment extends Fragment {
 
                         Intent intent = new Intent(getContext(), JugadorDetailActivity.class);
                         intent.putExtra("JUGADOR", jugador);
-                        startActivity(intent);
+                        startActivityForResult(intent, 1);
                     }
                 });
 
@@ -215,9 +218,17 @@ public class ListaJugadoresFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-//        if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
-//            Toast.makeText(getActivity(), "OK", Toast.LENGTH_SHORT).show();
-//        }
+        if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
+            Snackbar.make(rl, "El jugador se ha eliminado exitosamente", Snackbar.LENGTH_LONG)
+                    .setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    })
+                    .setActionTextColor(getResources().getColor(R.color.primary))
+                    .show();
+        }
     }
 
     public void limpiarRecyclerView() {

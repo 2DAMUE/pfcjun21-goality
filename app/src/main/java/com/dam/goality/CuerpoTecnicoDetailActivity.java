@@ -1,6 +1,7 @@
 package com.dam.goality;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +14,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.dam.goality.model.CuerpoTecnico;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class CuerpoTecnicoDetailActivity extends AppCompatActivity {
 
@@ -74,5 +78,33 @@ public class CuerpoTecnicoDetailActivity extends AppCompatActivity {
                     .show();
         }
 
+    }
+
+    public void cancelar(View view) {
+        setResult(RESULT_CANCELED);
+        finish();
+    }
+
+    public void eliminarPerfil(View view) {
+        MaterialAlertDialogBuilder alertDialog = new MaterialAlertDialogBuilder(this);
+        alertDialog.setMessage("¿Estás seguro que deseas eliminar este miembro del cuerpo técnico?");
+        alertDialog.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                DatabaseReference dR = FirebaseDatabase.getInstance().getReference("CuerpoTecnico").child(ct.getId());
+                dR.removeValue();
+
+                Intent i = new Intent();
+                setResult(RESULT_OK, i);
+                finish();
+            }
+        });
+        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        alertDialog.create().show();
     }
 }
